@@ -110,7 +110,7 @@ int *ioopm_list_get(list_t *list, int index)
 
   if (cursor == stop) return NULL;
 
-  return(cursor->index);
+  return(cursor->element);
 }
 
 /// Du får ändra på denna kod om du vill -- t.ex. för att
