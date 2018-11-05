@@ -110,7 +110,7 @@ int *ioopm_list_get(list_t *list, int index)
 
   if (cursor == stop) return NULL;
 
-  return(&cursor);
+  return(cursor);
 }
 
 /// Du får ändra på denna kod om du vill -- t.ex. för att
@@ -138,7 +138,7 @@ int ioopm_list_size(list_t *list)
 
   do {
     cursor = cursor->next;
-    size = size++;
+    size++;
   } while(cursor != stop);
   return(size);
 }
