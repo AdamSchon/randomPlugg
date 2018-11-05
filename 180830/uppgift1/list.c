@@ -27,7 +27,7 @@ static node_t *node_create(int element)
   };
   return result;
 }
-  
+
 list_t *ioopm_list_create()
 {
   list_t *newList = malloc(sizeof(list_t));
@@ -42,22 +42,12 @@ void ioopm_list_destroy(list_t *list)
 {
   do {
     ioopm_list_remove(list, 1);
-  } while (list->first->next != NULL);
+  } while (list->first->next != list->first);
   free(list->first);
   free(list);
 }
 
 void ioopm_list_prepend(list_t *list, int element)
-{
-  node_t *newNode = node_create(element);
-  
-  list->first->previous->next = newNode;
-  newNode->previous = list->first->previous;
-  newNode->next = list->first;
-  list->first->previous = newNode;
-}
-
-void ioopm_list_append(list_t *list, int element)
 {
   node_t *newNode = node_create(element);
 
@@ -67,14 +57,59 @@ void ioopm_list_append(list_t *list, int element)
   list->first->next = newNode;
 }
 
+void ioopm_list_append(list_t *list, int element)
+{
+  node_t *newNode = node_create(element);
+
+  list->first->previous->next = newNode;
+  newNode->previous = list->first->previous;
+  newNode->next = list->first;
+  list->first->previous = newNode;
+}
+
 bool ioopm_list_remove(list_t *list, int index)
 {
-  /// TODO
+  node_t *stop = list->first;
+
+  if (index >=) 0){
+    node_t *cursor = stop->next;
+    for (int i = 0; index != i && cursor != stop; i++;) {
+      cursor = cursor->next;
+    }
+  } else {
+    node_t *cursor = stop->previous;
+    for (int i = -1; index != i && cursor != stop; i--;) {
+      cursor = cursor->previous;
+    }
+  }
+
+  if (cursor == stop) return false;
+
+  cursor->previous->next = cursor->next;
+  cursor->next->previous = cursor->previous;
+  free(cursor);
+  return(true);
 }
 
 int *ioopm_list_get(list_t *list, int index)
 {
-  /// TODO
+  node_t *stop = list->first;
+
+  if (index >=) 0){
+    node_t *cursor = stop->next;
+    for (int i = 0; index != i && cursor != stop; i++;) {
+      cursor = cursor->next;
+    }
+  } else {
+    node_t *cursor = stop->previous;
+    for (int i = -1; index != i && cursor != stop; i--;) {
+      cursor = cursor->previous;
+    }
+  }
+
+  if (cursor == stop) return NULL;
+
+  return(cursor);
 }
 
 /// Du får ändra på denna kod om du vill -- t.ex. för att
@@ -96,5 +131,13 @@ bool ioopm_list_contains(list_t *list, int element)
 
 int ioopm_list_size(list_t *list)
 {
-  /// TODO
+  node_t *stop = list->first;
+  node_t *cursor = stop->next;
+  int size = 0;
+
+  do {
+    cursor = cursor->next;
+    size = size++;
+  } while(cursor != stop);
+  return(size);
 }
