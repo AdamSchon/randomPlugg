@@ -75,6 +75,7 @@ bool ioopm_list_remove(list_t *list, int index)
   node_t *cursor = list->first;
   if (index >= 0){
     cursor = stop->next;
+    #THIS FOR LOOP NEEDS TO BE FIXED. 
     for (int i = 0; index != i && cursor != stop; i++) {
       cursor = cursor->next;
     }
