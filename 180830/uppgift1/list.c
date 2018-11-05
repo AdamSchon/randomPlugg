@@ -71,14 +71,14 @@ bool ioopm_list_remove(list_t *list, int index)
 {
   node_t *stop = list->first;
 
-  if (index >=) 0){
+  if (index >= 0){
     node_t *cursor = stop->next;
-    for (int i = 0; index != i && cursor != stop; i++;) {
+    for (int i = 0; index != i && cursor != stop; i++) {
       cursor = cursor->next;
     }
   } else {
     node_t *cursor = stop->previous;
-    for (int i = -1; index != i && cursor != stop; i--;) {
+    for (int i = -1; index != i && cursor != stop; i--) {
       cursor = cursor->previous;
     }
   }
@@ -94,22 +94,23 @@ bool ioopm_list_remove(list_t *list, int index)
 int *ioopm_list_get(list_t *list, int index)
 {
   node_t *stop = list->first;
+  node_t *cursor = list->first;
 
-  if (index >=) 0){
-    node_t *cursor = stop->next;
-    for (int i = 0; index != i && cursor != stop; i++;) {
+  if (index >= 0){
+    cursor = stop->next;
+    for (int i = 0; index != i && cursor != stop; i++) {
       cursor = cursor->next;
     }
   } else {
-    node_t *cursor = stop->previous;
-    for (int i = -1; index != i && cursor != stop; i--;) {
+    cursor = stop->previous;
+    for (int i = -1; index != i && cursor != stop; i--) {
       cursor = cursor->previous;
     }
   }
 
   if (cursor == stop) return NULL;
 
-  return(cursor);
+  return(&cursor);
 }
 
 /// Du får ändra på denna kod om du vill -- t.ex. för att
