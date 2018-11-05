@@ -96,7 +96,7 @@ int *ioopm_list_get(list_t *list, int index)
   node_t *stop = list->first;
   node_t *cursor = list->first;
 
-  if (index >= 0){
+  if (index >=) 0){
     cursor = stop->next;
     for (int i = 0; index != i && cursor != stop; i++) {
       cursor = cursor->next;
