@@ -70,14 +70,14 @@ void ioopm_list_append(list_t *list, int element)
 bool ioopm_list_remove(list_t *list, int index)
 {
   node_t *stop = list->first;
-
+  node_t *cursor = list->first;
   if (index >= 0){
-    node_t *cursor = stop->next;
+    cursor = stop->next;
     for (int i = 0; index != i && cursor != stop; i++) {
       cursor = cursor->next;
     }
   } else {
-    node_t *cursor = stop->previous;
+    cursor = stop->previous;
     for (int i = -1; index != i && cursor != stop; i--) {
       cursor = cursor->previous;
     }
