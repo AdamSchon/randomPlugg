@@ -32,6 +32,8 @@ list_t *ioopm_list_create()
 {
   list_t *newList = malloc(sizeof(list_t));
   node_t *firstNode = node_create(NULL);
+  firstNode->next = firstNode;
+  firstNode->previous = firstNode;
   *newList = (list_t) {
     .first = firstNode
   };
