@@ -9,19 +9,20 @@
 #define assert_eq(v, expected)                 \
   do { \
     int a = (v); int b = (expected);                                    \
-    if (a != b) printf("Assertion failed: %d != %d \t\t\t\t | %s:%d (%s)\n", a, b, __FILE__, __LINE__, __FUNCTION__); } while (0); 
+    if (a != b) printf("Assertion failed: %d != %d \t\t\t\t | %s:%d (%s)\n", a, b, __FILE__, __LINE__, __FUNCTION__); } while (0);
 
 
 void test_forward_iteration()
 {
+  printf("TEST1");
   list_t *list = ioopm_list_create();
   int expected[Elts];
-  
+
   for (int i = 0; i < Elts; ++i)
     {
       int v = i;
       expected[i] = v;
-      ioopm_list_append(list, v); 
+      ioopm_list_append(list, v);
     }
 
   for (int i = 0; i < Elts; ++i)
@@ -30,9 +31,9 @@ void test_forward_iteration()
       /// If this test failed, then either your append is not
       /// really appending, or your get does not go forward in the
       /// list correctly, or both.
-      assert_eq(v, expected[i]); 
+      assert_eq(v, expected[i]);
     }
-  
+  printf("TEST2");
   ioopm_list_destroy(list);
 }
 
@@ -40,12 +41,12 @@ void test_backward_iteration()
 {
   list_t *list = ioopm_list_create();
   int expected[Elts];
-  
+
   for (int i = 0; i < Elts; ++i)
     {
       int v = i;
       expected[i] = v;
-      ioopm_list_prepend(list, v); 
+      ioopm_list_prepend(list, v);
     }
 
   for (int i = 0; i < Elts; ++i)
@@ -56,22 +57,22 @@ void test_backward_iteration()
       /// the list correctly, or both.
       assert_eq(v, expected[i]);
     }
-  
+
   ioopm_list_destroy(list);
 }
 
 /// This test creates a list ...210012... and then reads from both
 /// ends and checks that the values obtained are the same, e.g.,
-/// (2,2), (1,1), (0,0) in the case above. 
+/// (2,2), (1,1), (0,0) in the case above.
 void test_pallindrome()
 {
   list_t *list = ioopm_list_create();
-  
+
   for (int i = 0; i < Elts / 2; ++i)
     {
       int v = i * 2;
-      ioopm_list_prepend(list, v); 
-      ioopm_list_append(list, v); 
+      ioopm_list_prepend(list, v);
+      ioopm_list_append(list, v);
     }
 
   for (int i = 0; i < Elts; ++i)
@@ -85,7 +86,7 @@ void test_pallindrome()
       /// forward + prepend, etc.
       assert_eq(v1, v2);
     }
-  
+
   ioopm_list_destroy(list);
 }
 
@@ -95,17 +96,17 @@ void test_pallindrome()
 void test_remove()
 {
   list_t *list = ioopm_list_create();
-  
+
   for (int i = 0; i < Elts; ++i)
     {
-      ioopm_list_append(list, i); 
+      ioopm_list_append(list, i);
     }
 
   for (int i = 1; i < Elts / 2 + 1; ++i)
     {
-      ioopm_list_remove(list, i); 
+      ioopm_list_remove(list, i);
     }
-  
+
   for (int i = 0; i < Elts / 2; ++i)
     {
       int v1 = *ioopm_list_get(list, i);
@@ -128,7 +129,7 @@ void test_remove()
   /// If this test fails, then remove did not catch an invalid
   /// index (larger than the list, in the negative)
   assert_eq(ioopm_list_remove(list, -(Elts + 1)), false);
-  
+
   ioopm_list_destroy(list);
 }
 
@@ -140,14 +141,14 @@ void test_size()
   list_t *list = NULL;
 
   list = ioopm_list_create();
-  for (int i = 0; i < Elts; ++i) ioopm_list_append(list, i); 
+  for (int i = 0; i < Elts; ++i) ioopm_list_append(list, i);
   /// If this test fails, then size does not count nodes correctly
   /// (are you counting the sentinel?)
   assert_eq(ioopm_list_size(list), Elts);
   ioopm_list_destroy(list);
 
   list = ioopm_list_create();
-  for (int i = 0; i < Elts; ++i) ioopm_list_prepend(list, i); 
+  for (int i = 0; i < Elts; ++i) ioopm_list_prepend(list, i);
   /// If this test fails, then size does not count nodes correctly
   /// (are you counting the sentinel?)
   assert_eq(ioopm_list_size(list), Elts);
@@ -161,11 +162,11 @@ void test_size()
   ioopm_list_destroy(list);
 }
 
-/// This test checks that contains work and that remove does not break the list. 
+/// This test checks that contains work and that remove does not break the list.
 void test_contains1()
 {
   list_t *list = ioopm_list_create();
-  for (int i = 0; i < Elts; ++i) ioopm_list_append(list, i); 
+  for (int i = 0; i < Elts; ++i) ioopm_list_append(list, i);
   assert_eq(ioopm_list_contains(list, 0), true);
   if (4 < Elts) assert_eq(ioopm_list_contains(list, 4), true);
   if (4 < Elts) assert_eq(ioopm_list_contains(list, 9), true);
@@ -175,11 +176,11 @@ void test_contains1()
   ioopm_list_destroy(list);
 }
 
-/// This test checks that contains work and that remove does not break the list. 
+/// This test checks that contains work and that remove does not break the list.
 void test_contains2()
 {
   list_t *list = ioopm_list_create();
-  for (int i = 0; i < Elts; ++i) ioopm_list_append(list, i); 
+  for (int i = 0; i < Elts; ++i) ioopm_list_append(list, i);
   assert_eq(ioopm_list_contains(list, 0), true);
   if (4 < Elts) assert_eq(ioopm_list_contains(list, 4), true);
   if (4 < Elts) assert_eq(ioopm_list_contains(list, 9), true);
@@ -202,6 +203,6 @@ int main(void)
   test_size();
 
   puts("If you see this message, and no error messages above -- all tests passed!");
-  
+
   return 0;
 }
