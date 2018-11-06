@@ -75,13 +75,17 @@ bool ioopm_list_remove(list_t *list, int index)
   node_t *cursor = list->first;
   if (index >= 0){
     cursor = stop->next;
-    #THIS FOR LOOP NEEDS TO BE FIXED. 
-    for (int i = 0; index != i && cursor != stop; i++) {
+    for (int i = 0; index != i; i++) {
+      if (stop == cursor) {
+        break;
+      }
       cursor = cursor->next;
-    }
   } else {
     cursor = stop->previous;
-    for (int i = -1; index != i && cursor != stop; i--) {
+    for (int i = -1; index != i) {
+      if (stop == cursor) {
+        break;
+      }
       cursor = cursor->previous;
     }
   }
@@ -101,12 +105,18 @@ int *ioopm_list_get(list_t *list, int index)
 
   if (index >= 0){
     cursor = stop->next;
-    for (int i = 0; index != i && cursor != stop; i++) {
+    for (int i = 0; index != i; i++) {
+      if (stop == cursor) {
+        break;
+      }
       cursor = cursor->next;
     }
   } else {
     cursor = stop->previous;
-    for (int i = -1; index != i && cursor != stop; i--) {
+    for (int i = -1; index != i; i--) {
+      if (stop == cursor) {
+        break;
+      }
       cursor = cursor->previous;
     }
   }
