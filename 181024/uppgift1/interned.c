@@ -143,7 +143,7 @@ int intstr_refcount(char *str)
 
   unsigned long bucket = string_hash(str) % No_Buckets;
   entry_t **entry = &buckets[bucket];
-
+  if (str == NULL) return(0);
   while (*entry)
     {
       if (str == (*entry)->string)
