@@ -159,8 +159,9 @@ void intstr_init()
 void intstr_done()
 {
   int i = 0;
+  entry_t *entry;
   while (i < No_Buckets) {
-    entry_t entry = buckets[i];
+    entry = buckets[i];
     while (entry) {
       intstr_destroy(entry->string);
       entry = buckets[i];
