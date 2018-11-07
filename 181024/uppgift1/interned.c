@@ -108,7 +108,7 @@ void intstr_destroy(char *str)
       buckets[bucket] = entry->next;
       free(entry);
       //Can I return in void function? Else make it skip next while loop
-      return(NULL);
+      return;
     }
     while (entry->next)
       {
@@ -158,12 +158,14 @@ void intstr_init()
 
 void intstr_done()
 {
-  for (int i = 0; i < No_Buckets; i++) {
+  int i = 0;
+  while (i < No_Buckets) {
     entry_t entry = buckets[i]
     while (entry) {
       intstr_destroy(entry->string);
       entry = buckets[i];
     }
+    i++;
   }
   free(buckets);
 }
