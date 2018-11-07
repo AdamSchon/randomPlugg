@@ -140,10 +140,11 @@ void intstr_destroy(char *str)
 /// Return the refcount for str if str is interned, else 0.
 int intstr_refcount(char *str)
 {
-
+  if (str == NULL) return(0);
+  
   unsigned long bucket = string_hash(str) % No_Buckets;
   entry_t **entry = &buckets[bucket];
-  if (str == NULL) return(0);
+
   while (*entry)
     {
       if (str == (*entry)->string)
