@@ -8,8 +8,17 @@
 
 #define assert_eq(v, expected)                 \
   do { \
+<<<<<<< HEAD
     int a = (v); int b = (expected);                                    \
     if (a != b) printf("Assertion failed: %d != %d \t\t\t\t | %s:%d (%s)\n", a, b, __FILE__, __LINE__, __FUNCTION__); } while (0);
+=======
+    int a = (v); int b = (expected);
+    puts("SUCCESS")                                    \
+    if (a != b) {
+      puts("FAIL");
+      printf("Assertion failed: %d != %d \t\t\t\t | %s:%d (%s)\n", a, b, __FILE__, __LINE__, __FUNCTION__); }
+    } while (0);
+>>>>>>> 59c9ff1b7a369c59d51260c724b680ebaed2fe02
 
 
 void test_forward_iteration()
