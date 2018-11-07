@@ -60,15 +60,10 @@ void test_that_I_can_call_destroy_with_non_interned_strings()
   char *c = strdup("String on the heap");
 
   /// Yes -- all of these should work without crashing
-  puts("11");
   intstr_destroy(a);
-  puts("12");
   intstr_destroy(b);
-  puts("13");
   intstr_destroy(c);
-  puts("14");
   intstr_destroy(NULL);
-  puts("15");
 
   free(c);
 }
@@ -83,6 +78,7 @@ void test_that_I_can_call_refcount_with_non_interned_strings()
   assert_eq(intstr_refcount(a), 0);
   assert_eq(intstr_refcount(b), 0);
   assert_eq(intstr_refcount(c), 0);
+  puts("1");
   assert_eq(intstr_refcount(NULL), 0);
 
   free(c);
@@ -200,7 +196,6 @@ int main(int argc, char *argv[])
 
   test_that_multiple_calls_to_create_returns_the_same_string();
   test_that_create_following_destroy_still_returns_the_same_string();
-  puts("1");
 
   test_that_I_can_call_destroy_with_non_interned_strings();
   puts("2");
