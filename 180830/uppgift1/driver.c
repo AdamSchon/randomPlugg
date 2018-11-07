@@ -33,7 +33,7 @@ void test_forward_iteration()
       /// list correctly, or both.
       assert_eq(v, expected[i]);
     }
-  printf("TEST2");
+  puts("TEST2");
   ioopm_list_destroy(list);
 }
 
@@ -194,7 +194,6 @@ void test_contains2()
 
 int main(void)
 {
-  printf("HEJ\n");
   test_forward_iteration();
   test_backward_iteration();
   test_pallindrome();
