@@ -100,6 +100,9 @@ bool intstr_is_interned(char *str)
 /// memory.
 void intstr_destroy(char *str)
 {
+  if (str == NULL) {
+    return;
+  }
   unsigned long bucket = string_hash(str) % No_Buckets;
   entry_t *entry = buckets[bucket];
 
