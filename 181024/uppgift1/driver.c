@@ -10,13 +10,13 @@
   do {                                                                  \
     int _b_ = (got); int _a_ = (expected);                              \
     if (_a_ != _b_) printf("Assertion failed: expected %d, got %d \t\t\t\t | %s:%d (%s)\n", _a_, _b_, __FILE__, __LINE__, __FUNCTION__); } \
-  while (0); 
+  while (0);
 
 #define assert_eq_ptr(got, expected)                                    \
   do {                                                                  \
     void *_b_ = (got); void *_a_ = (expected);                          \
     if (_a_ != _b_) printf("Assertion failed: expected %p, got %p \t\t\t\t | %s:%d (%s)\n", _a_, _b_, __FILE__, __LINE__, __FUNCTION__); } \
-  while (0); 
+  while (0);
 
 
 void test_that_I_can_create_interned_strings_from_strings_in_the_binary()
@@ -100,13 +100,13 @@ void test_that_I_can_call_is_interned_with_non_interned_strings()
 
 void test_that_multiple_calls_to_create_returns_the_same_string()
 {
-  char *a = "test_that_multiple_calls_to_create_returns_the_same_string"; 
+  char *a = "test_that_multiple_calls_to_create_returns_the_same_string";
 
   /// An interned string is equivalent to its "origin"
   char *str = intstr_create(a);
   assert_eq(strcmp(str, a), 0);
 
-  /// Subsequent calls to intstr_create return the same string and 
+  /// Subsequent calls to intstr_create return the same string and
   char *b = intstr_create(a); /// using a
   assert_eq(strcmp(str, b), 0);
   char *c = intstr_create(str); /// using the non-interned string
@@ -117,9 +117,9 @@ void test_that_multiple_calls_to_create_returns_the_same_string()
 
 void test_that_multiple_calls_to_create_increases_refcount()
 {
-  char *a = "test_that_multiple_calls_to_create_increases_refcount"; 
+  char *a = "test_that_multiple_calls_to_create_increases_refcount";
 
-  /// An interned string has a refcount of 1 
+  /// An interned string has a refcount of 1
   char *str = intstr_create(a);
   assert_eq(intstr_refcount(str), 1);
 
@@ -134,7 +134,7 @@ void test_that_multiple_calls_to_create_increases_refcount()
 
 void test_that_multiple_calls_to_destroy_decreases_refcount()
 {
-  char *a = "test_that_multiple_calls_to_destroy_decreases_refcount"; 
+  char *a = "test_that_multiple_calls_to_destroy_decreases_refcount";
 
   /// Create an interned string withrefcount of 3
   char *str = intstr_create(a);
@@ -195,15 +195,20 @@ int main(int argc, char *argv[])
 
   test_that_multiple_calls_to_create_returns_the_same_string();
   test_that_create_following_destroy_still_returns_the_same_string();
+  puts("1");
 
   test_that_I_can_call_destroy_with_non_interned_strings();
+  puts("2");
   test_that_I_can_call_refcount_with_non_interned_strings();
 
   test_that_multiple_calls_to_create_increases_refcount();
+  puts("3");
   test_that_multiple_calls_to_destroy_decreases_refcount();
+  puts("4");
   test_that_calls_to_destroy_with_a_copy_does_not_decrease_refcount_for_interned_original();
+  puts("5");
 
   intstr_done();
-  
+
   return 0;
 }
