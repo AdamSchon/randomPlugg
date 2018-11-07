@@ -194,6 +194,7 @@ void test_contains2()
 
 int main(void)
 {
+  printf("HEJ\n");
   test_forward_iteration();
   test_backward_iteration();
   test_pallindrome();
