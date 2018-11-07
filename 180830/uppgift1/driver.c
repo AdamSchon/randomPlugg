@@ -14,6 +14,7 @@
 
 void test_forward_iteration()
 {
+  puts("YOYOYO");
   printf("TEST1");
   list_t *list = ioopm_list_create();
   int expected[Elts];
