@@ -12,6 +12,7 @@ struct entry
 {
   char *string;
   int refcount;
+  entry_t *next;
 };
 
 /// Global variable..
