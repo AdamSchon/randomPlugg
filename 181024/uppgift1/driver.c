@@ -60,10 +60,15 @@ void test_that_I_can_call_destroy_with_non_interned_strings()
   char *c = strdup("String on the heap");
 
   /// Yes -- all of these should work without crashing
+  puts("11");
   intstr_destroy(a);
+  puts("12");
   intstr_destroy(b);
+  puts("13");
   intstr_destroy(c);
+  puts("14");
   intstr_destroy(NULL);
+  puts("15");
 
   free(c);
 }
