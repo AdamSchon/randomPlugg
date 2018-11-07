@@ -80,6 +80,7 @@ bool ioopm_list_remove(list_t *list, int index)
         break;
       }
       cursor = cursor->next;
+    }
   } else {
     cursor = stop->previous;
     for (int i = -1; index != i; i--) {
