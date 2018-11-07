@@ -78,7 +78,6 @@ void test_that_I_can_call_refcount_with_non_interned_strings()
   assert_eq(intstr_refcount(a), 0);
   assert_eq(intstr_refcount(b), 0);
   assert_eq(intstr_refcount(c), 0);
-  puts("1");
   assert_eq(intstr_refcount(NULL), 0);
 
   free(c);
@@ -198,15 +197,11 @@ int main(int argc, char *argv[])
   test_that_create_following_destroy_still_returns_the_same_string();
 
   test_that_I_can_call_destroy_with_non_interned_strings();
-  puts("2");
   test_that_I_can_call_refcount_with_non_interned_strings();
 
   test_that_multiple_calls_to_create_increases_refcount();
-  puts("3");
   test_that_multiple_calls_to_destroy_decreases_refcount();
-  puts("4");
   test_that_calls_to_destroy_with_a_copy_does_not_decrease_refcount_for_interned_original();
-  puts("5");
 
   intstr_done();
 
