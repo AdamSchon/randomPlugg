@@ -4,15 +4,14 @@
 #include <assert.h>
 #include "interned.h"
 
-#define No_Buckets 17  
+#define No_Buckets 17
 
 typedef struct entry entry_t;
 
 struct entry
 {
   char *string;
-  int refcount; 
-  entry_t *next;
+  int refcount;
 };
 
 /// Global variable..
@@ -23,10 +22,11 @@ static unsigned long string_hash(char *str)
 {
   unsigned long result = 0;
   do
+  entry_t *next;
     {
       result = result * 31 + *str;
     }
-  while (*++str != '\0'); 
+  while (*++str != '\0');
   return result;
 }
 
@@ -53,7 +53,7 @@ char *intstr_create(char *str)
   unsigned long bucket = string_hash(str) % No_Buckets;
   entry_t *entry = buckets[bucket];
 
-  /// Search through the bucket for a string 
+  /// Search through the bucket for a string
   while (entry)
     {
       /// Use strcmp here -- because we expect str to be not interned
@@ -78,7 +78,20 @@ char *intstr_create(char *str)
 /// Returns true if str is interned, else false
 bool intstr_is_interned(char *str)
 {
-  /// TODO
+  unsigned long bucket = string_hash(str) % No_Buckets;
+  entry_t *entry = buckets[bucket];
+
+  while (entry)
+    {
+      /// Use strcmp here -- because we expect str to be not interned
+      if (strcmp(str, entry->string) == 0)
+        {
+          /// If the string was already interned, return true
+          return true;
+        }
+      entry = entry->next;
+    }
+
   return false; /// remove -- placed here to get the file to compile
 }
 
@@ -87,13 +100,39 @@ bool intstr_is_interned(char *str)
 /// memory.
 void intstr_destroy(char *str)
 {
-  /// TODO
+  unsigned long bucket = string_hash(str) % No_Buckets;
+  entry_t *entry = buckets[bucket];
+
+  if (entry) {
+    if (entry->string == str) {
+      buckets[bucket] = entry->next;
+      free(entry);
+      //Can I return in void function? Else make it skip next while loop
+      return();
+    }
+    while (entry->next)
+      {
+        /// Use strcmp here -- because we expect str to be not interned
+        if (str == entry->next->string)
+          {
+              if (entry->next->refcount > 1) {
+                --entry->next->refcount;
+                break;
+              } else {
+                entry_t *removed = entry->next;
+                entry->next = removed->next;
+                free(removed);
+                break;
+              }
+          }
+        entry = entry->next;
+      }
+    }
 }
 
 /// Return the refcount for str if str is interned, else 0.
 int intstr_refcount(char *str)
 {
-  if (str == NULL) return 0;
 
   unsigned long bucket = string_hash(str) % No_Buckets;
   entry_t **entry = &buckets[bucket];
@@ -104,6 +143,7 @@ int intstr_refcount(char *str)
         {
           return (*entry)->refcount;
         }
+        if (str == NULL) return 0;
       entry = &(*entry)->next;
     }
 
@@ -118,5 +158,12 @@ void intstr_init()
 
 void intstr_done()
 {
-  /// TODO
+  for (i = 0; i < No_Buckets; i++) {
+    entry_t entry = buckets[i]
+    while (entry) {
+      intstr_destroy(entry->string);
+      entry = buckets[i];
+    }
+  }
+  free(buckets);
 }
