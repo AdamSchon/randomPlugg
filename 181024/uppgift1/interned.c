@@ -22,7 +22,6 @@ static unsigned long string_hash(char *str)
 {
   unsigned long result = 0;
   do
-  entry_t *next;
     {
       result = result * 31 + *str;
     }
