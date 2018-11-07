@@ -105,8 +105,12 @@ void intstr_destroy(char *str)
 
   if (entry) {
     if (entry->string == str) {
+      if (entry->refcount > 1) {
+        --entry->refcount;
+      } else {
       buckets[bucket] = entry->next;
       free(entry);
+    }
       //Can I return in void function? Else make it skip next while loop
       return;
     }
