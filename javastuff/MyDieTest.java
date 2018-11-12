@@ -5,7 +5,7 @@ public class MyDieTest {
     Scanner sc = new Scanner(System.in);
     System.out.println("How many sides should the die have?");
     int sides = sc.nextInt();
-    Die d = new PairOfDice(sides);
+    PairOfDice d = new PairOfDice(sides);
     for (int i = 0; i < 10; i++) {
       d.roll();
       System.out.println(d.toString());
