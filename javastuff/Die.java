@@ -5,10 +5,13 @@ public class Die {
   private int value;
 
   public Die() {
-      this.numberOfSides = 6;
+      this.Die(6);
   }
 
   public Die(int numberOfSides) {
+    if (numberOfSides < 1) {
+      throw new IlligalArgumentException("Illegal number of sides for die");
+    }
       this.numberOfSides = numberOfSides;
   }
 
