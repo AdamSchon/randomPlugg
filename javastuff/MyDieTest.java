@@ -1,5 +1,5 @@
 import java.util.Scanner;
-package Die;
+//package Die;
 public class MyDieTest {
   public static void main() {
     Scanner sc = new Scanner(System.in);
