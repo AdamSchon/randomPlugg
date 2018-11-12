@@ -2,7 +2,7 @@ public class PairOfDice {
   private Die DieOne;
   private Die DieTwo;
 
-  public void PairOfDice(int numberOfSides) {
+  public PairOfDice(int numberOfSides) {
     this.DieOne = new Die(numberOfSides);
     this.DieTwo = new Die(numberOfSides);
   }
