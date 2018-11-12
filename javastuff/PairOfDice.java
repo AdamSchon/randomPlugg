@@ -7,10 +7,9 @@ public class PairOfDice {
     this.DieTwo = new Die(numberOfSides);
   }
 
-  public int roll() {
+  public void roll() {
     DieOne.roll();
     DieTwo.roll();
-    return(DieOne.get(), DieTwo.get());
   }
 
   public int getOne() {
