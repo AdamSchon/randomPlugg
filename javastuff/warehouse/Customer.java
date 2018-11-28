@@ -30,7 +30,7 @@ public class Customer {
   public static void main(String [] args) {
       Customer c = new Customer(1,4);
       while(!c.isDone()){
-        c.server();
+        c.serve();
         System.out.println("Isn't done");
       }
       System.out.println("Is done");
