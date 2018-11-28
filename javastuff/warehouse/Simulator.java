@@ -4,7 +4,7 @@ public class Simulator{
         int steps = 100;
         Simulation s = new Simulation(); // TODO: Add parameters!
         for(int i = 0; i < steps; i++){
-            /*System.out.print("\033[2J\033[;H");*/
+            System.out.print("\033[2J\033[;H");
             s.step();
             System.out.println(s.store.getAverageQueueLength());
             System.out.println(s);
