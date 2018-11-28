@@ -18,7 +18,7 @@ public class Customer {
 
   public boolean isDone() {
     if (groceries < 0) {
-      throw new IllegalArgumentException("Customer has negative amount of groceries")
+      throw new IllegalArgumentException("Customer has negative amount of groceries");
     }
     if (groceries == 0) {
       return true;
