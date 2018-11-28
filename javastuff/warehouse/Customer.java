@@ -1,5 +1,3 @@
-
-
 public class Customer {
   private int bornTime;
   private int groceries;
@@ -25,6 +23,10 @@ public class Customer {
     } else {
       return false;
     }
+  }
+
+  public String toString() {
+    return("["+this.bornTime+ ", " + this.groceries+"]");
   }
 
   public static void main(String [] args) {
