@@ -28,7 +28,7 @@ public class Customer {
   }
 
   public static void main(String [] args) {
-      c = new Customer(1,4);
+      Customer c = new Customer(1,4);
       while(!c.isDone()){
         c.server();
         System.out.println("Isn't done");
