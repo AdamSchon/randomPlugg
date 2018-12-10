@@ -167,7 +167,7 @@ obj_t *kalloc_inner_find(obj_t *mem, void *p)
       if (kalloc_header(p) == mem->next) return mem;
 
       mem = mem->next;
-    } while mem;
+    } while (mem);
 
     return NULL;
 }
