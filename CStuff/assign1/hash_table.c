@@ -1,4 +1,4 @@
-19#include <stdlib.h>
+#include <stdlib.h>
 
 typedef struct entry entry_t;
 typedef struct hash_table hash_table_t;
