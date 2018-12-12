@@ -26,6 +26,7 @@ void hash_table_insert(hash_table_t *ht, int key, char *value) {
   entry_t *bucket = ht->buckets[key % 19];
 
   if (bucket == NULL) {
+    puts("inserted new");
     ht->buckets[key % 19] = entry;
     return;
   }
@@ -45,6 +46,10 @@ void hash_table_insert(hash_table_t *ht, int key, char *value) {
 
 void *hash_table_lookup(hash_table_t *ht, int key) {
   entry_t *bucket = ht->buckets[key % 19];
+
+  if(bucket == NULL) {
+    return(NULL);
+  }
 
   do {
     if (bucket->key == key) {
