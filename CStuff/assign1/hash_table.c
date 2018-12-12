@@ -26,10 +26,10 @@ void hash_table_insert(hash_table_t *ht, int key, char *value) {
   entry_t *bucket = ht->buckets[key % 19];
 
   if (bucket == NULL) {
-    buckets[key % 19] = entry;
+    ht->buckets[key % 19] = entry;
     return;
   }
-  
+
   do {
     if (bucket->key == key) {
       return;
