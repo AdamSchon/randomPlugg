@@ -18,7 +18,7 @@ hash_table_t *create_hash_table() {
   return(ht);
 }
 
-void ioopm_hash_table_insert(hash_table_t *ht, int key, char *value) {
+void hash_table_insert(hash_table_t *ht, int key, char *value) {
   entry_t *entry = malloc(sizeof(entry_t));
   entry->key = key;
   entry->value = value;
@@ -37,7 +37,7 @@ void ioopm_hash_table_insert(hash_table_t *ht, int key, char *value) {
   bucket->next = entry;
 }
 
-void *ioopm_hash_table_lookup(hash_table_t *ht, int key) {
+void *hash_table_lookup(hash_table_t *ht, int key) {
   entry_t *bucket = ht->buckets[key % 19];
 
   do {
@@ -49,7 +49,7 @@ void *ioopm_hash_table_lookup(hash_table_t *ht, int key) {
   return(NULL);
 }
 
-char *ioopm_hash_table_remove(hash_table_t *ht, int key) {
+char *hash_table_remove(hash_table_t *ht, int key) {
   entry_t *bucket = ht->buckets[key % 19];
 
   do {
@@ -62,4 +62,15 @@ char *ioopm_hash_table_remove(hash_table_t *ht, int key) {
     }
   } while (bucket->next != NULL);
   return(NULL);
+}
+
+int main(int argc, char *argv[]) {
+  hash_table_t *ht = create_hash_table();
+  char *one = "hejsan"
+  hash_table_insert(ht, 14, one);
+  char *two = hash_table_lookup(ht, 14);
+  printf("%s", two);
+  hash_table_remove(ht, 14);
+  char *three = hash_table_lookup(ht, 14);
+  printf("%s", three);
 }
