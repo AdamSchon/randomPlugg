@@ -61,7 +61,7 @@ char *hash_table_remove(hash_table_t *ht, int key) {
   if (bucket == NULL) {
     return(NULL);
   }
-
+  puts("HEJ");
   do {
     if (bucket->next->key == key) {
       entry_t *temp = bucket->next;
