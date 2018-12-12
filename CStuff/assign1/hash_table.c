@@ -1,4 +1,5 @@
 #include <stdlib.h>
+#include <stdio.h>
 
 typedef struct entry entry_t;
 typedef struct hash_table hash_table_t;
@@ -66,7 +67,7 @@ char *hash_table_remove(hash_table_t *ht, int key) {
 
 int main(int argc, char *argv[]) {
   hash_table_t *ht = create_hash_table();
-  char *one = "hejsan"
+  char *one = "hejsan";
   hash_table_insert(ht, 14, one);
   char *two = hash_table_lookup(ht, 14);
   printf("%s", two);
