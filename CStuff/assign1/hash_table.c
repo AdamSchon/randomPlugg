@@ -58,6 +58,10 @@ void *hash_table_lookup(hash_table_t *ht, int key) {
 char *hash_table_remove(hash_table_t *ht, int key) {
   entry_t *bucket = ht->buckets[key % 19];
 
+  if (bucket == NULL) {
+    return(NULL);
+  }
+
   do {
     if (bucket->next->key == key) {
       entry_t *temp = bucket->next;
