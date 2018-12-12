@@ -3,7 +3,7 @@
 
 import java.util.Iterator;
 
-public class LinkedSet /* TODO!!! */ {
+public class LinkedSet<A> extends Collection<A> implements Set<A> {
     /// Don't change the Link class!
     private class Link {
         Link next;
@@ -18,12 +18,18 @@ public class LinkedSet /* TODO!!! */ {
     }
 
     /// Write your code below this line! You may change the below but you must use first and last.
-    /* TODO! */ Link first = new Link(null); /// Sets up a sentinel
-    /* TODO! */ Link last = first;
+    private Link first = new Link(null); /// Sets up a sentinel
+    private Link last = first;
 
     /// TODO: add a constructor!
+    public LinkedSet(int maxCapacity) {
+      super(maxCapacity)
+    }
 
     /// TODO: add public boolean equals...
+    public boolean equals(LinkedSet<T> o) {
+
+    }
 
     /// TODO: do we need our own newEmptyCollection?
 
@@ -42,13 +48,19 @@ public class LinkedSet /* TODO!!! */ {
         }
 
         public T next() {
-            /// TODO
+            this.prev = this.current;
+            this.current = this.current.next;
+            return this.current.element;
         }
         public boolean hasNext() {
-            /// TODO
+            if (this.current.next != null) {
+              return true;
+            }
+            return false;
         }
         public void remove() {
-            /// TODO
+            this.prev.next = this.current.next;
+            this.current = this.prev.next;
         }
     }
 
