@@ -69,7 +69,7 @@ char *hash_table_remove(hash_table_t *ht, int key) {
   }
   if (bucket->key == key) {
     ht->buckets[key % 19] = bucket->next;
-    char *returnValue = temp->value;
+    char *returnValue = bucket->value;
     free(bucket);
     return(returnValue);
   }
