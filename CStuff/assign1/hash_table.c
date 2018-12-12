@@ -92,6 +92,4 @@ int main(int argc, char *argv[]) {
   char *two = hash_table_lookup(ht, 14);
   puts(two);
   hash_table_remove(ht, 14);
-  //&#char *three = hash_table_lookup(ht, 14);
-  puts(three);
 }
