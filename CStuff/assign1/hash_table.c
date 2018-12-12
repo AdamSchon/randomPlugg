@@ -1,7 +1,8 @@
 #include <stdlib.h>
-
-
 int bucket_amount = 19;
+
+typedef struct entry entry_t;
+typedef struct hash_table hash_table_t;
 
 struct entry {
   int key;
@@ -12,9 +13,6 @@ struct entry {
 struct hash_table {
   entry_t *buckets[bucket_amount];
 };
-
-typedef struct entry entry_t;
-typedef struct hash_table hash_table_t;
 
 hash_table_t *create_hash_table() {
   hash_table_t *ht = malloc(sizeof(hash_table_t));
