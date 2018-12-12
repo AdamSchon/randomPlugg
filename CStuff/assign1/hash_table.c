@@ -48,12 +48,13 @@ void *hash_table_lookup(hash_table_t *ht, int key) {
   entry_t *bucket = ht->buckets[key % 19];
 
   if(bucket == NULL) {
+    puts("Found as NULL");
     return(NULL);
   }
 
   do {
     if (bucket->key == key) {
-      return(&bucket);
+      return(&bucket->key);
     }
     bucket = bucket->next;
   } while(bucket != NULL);
@@ -66,7 +67,10 @@ char *hash_table_remove(hash_table_t *ht, int key) {
   if (bucket == NULL) {
     return(NULL);
   }
-  puts("HEJ");
+  if (bucket->key == key) {
+    ht->buckets[key % 19] = bucket->next;
+    free(bucket);
+  }
   do {
     if (bucket->next->key == key) {
       entry_t *temp = bucket->next;
@@ -84,8 +88,8 @@ int main(int argc, char *argv[]) {
   char *one = "hejsan";
   hash_table_insert(ht, 14, one);
   char *two = hash_table_lookup(ht, 14);
-  printf("%s", two);
+  puts(two);
   hash_table_remove(ht, 14);
   char *three = hash_table_lookup(ht, 14);
-  printf("%s", three);
+  puts(three);
 }
