@@ -38,7 +38,7 @@ void ioopm_hash_table_insert(hash_table_t *ht, int key, char *value) {
 }
 
 void *ioopm_hash_table_lookup(hash_table_t *ht, int key) {
-  entry_t bucket = ht->buckets[key % 19];
+  entry_t *bucket = ht->buckets[key % 19];
 
   do {
     if (bucket->key == key) {
@@ -50,7 +50,7 @@ void *ioopm_hash_table_lookup(hash_table_t *ht, int key) {
 }
 
 char *ioopm_hash_table_remove(hash_table_t *ht, int key) {
-  entry_t bucket = ht->buckets[key % 19];
+  entry_t *bucket = ht->buckets[key % 19];
 
   do {
     if (bucket->next->key == key) {
