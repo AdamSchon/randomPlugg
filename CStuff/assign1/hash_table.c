@@ -1,5 +1,4 @@
-#include <stdlib.h>
-int bucket_amount = 19;
+19#include <stdlib.h>
 
 typedef struct entry entry_t;
 typedef struct hash_table hash_table_t;
@@ -11,7 +10,7 @@ struct entry {
 };
 
 struct hash_table {
-  entry_t *buckets[bucket_amount];
+  entry_t *buckets[19];
 };
 
 hash_table_t *create_hash_table() {
@@ -23,7 +22,7 @@ void ioopm_hash_table_insert(hash_table_t *ht, int key, char *value) {
   entry_t *entry = malloc(sizeof(entry_t));
   entry->key = key;
   entry->value = value;
-  entry_t *bucket = buckets[key % bucket_amount];
+  entry_t *bucket = buckets[key % 19];
 
   do {
     if (bucket->key == key) {
@@ -39,7 +38,7 @@ void ioopm_hash_table_insert(hash_table_t *ht, int key, char *value) {
 }
 
 void *ioopm_hash_table_lookup(hash_table_t *ht, int key) {
-  entry_t bucket = buckets[key % bucket_amount];
+  entry_t bucket = buckets[key % 19];
 
   do {
     if (bucket->key == key) {
@@ -51,7 +50,7 @@ void *ioopm_hash_table_lookup(hash_table_t *ht, int key) {
 }
 
 char *ioopm_hash_table_remove(hash_table_t *ht, int key) {
-  entry_t bucket = buckets[key % bucket_amount];
+  entry_t bucket = buckets[key % 19];
 
   do {
     if (bucket->next->key == key) {
