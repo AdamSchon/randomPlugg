@@ -114,7 +114,7 @@ void list_merge(list_t *source, list_t *dest)
     final = listA;
     listA = listA->next;
   } else {
-    puts("2");
+    puts((char *) listA->element);
     final = listB;
     listB = listB->next;
   }
