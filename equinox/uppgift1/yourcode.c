@@ -101,13 +101,13 @@ void list_merge(list_t *source, list_t *dest)
     return;
   }
   if (source == NULL) {
-    return(dest);
+    return;
   }
 
   link_t *listA = source->first;
   link_t *listB = dest->first;
 
-  if (*listA->element < *listB->element) {
+  if (listA->*element < listB->*element) {
     dest->first = listA;
     link_t *final = listA;
     listA = listA->next;
