@@ -109,10 +109,10 @@ void list_merge(list_t *source, list_t *dest)
   link_t *final;
   //puts((char *) listA->element);
   //puts((char *) *listA->element);
-  
+
   //puts((char *) **listA->element);
 
-  if ((char *) &listA->element < (char *) &listB->element) {
+  if ((char *) listA->element < (char *) listB->element) {
     puts("1");
     dest->first = listA;
     final = listA;
@@ -134,6 +134,7 @@ void list_merge(list_t *source, list_t *dest)
       puts("4");
       final->next = listA;
       final = final->next;
+      dest->last = final;
       listA = listA->next;
     }
     if ((char *) listA->element < (char *) listB->element) {
@@ -147,7 +148,7 @@ void list_merge(list_t *source, list_t *dest)
       final = final->next;
       listB = listB->next;
     }
-  } while(listA != NULL && listB != NULL);
+  } while(!listA == NULL && !listB == NULL);
 
   link_t *new = link_create(NULL, NULL); //Creating dummy
   source->first = new;
