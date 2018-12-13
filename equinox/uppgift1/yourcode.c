@@ -70,7 +70,7 @@ int list_size(list_t *list)
   do {
     curr = curr->next;
     i++;
-  } while (curr != NULL);
+  } while (curr->element != NULL);
 
   return i;
 }
@@ -109,29 +109,35 @@ void list_merge(list_t *source, list_t *dest)
   link_t *final;
 
   if (listA->element < listB->element) {
+    puts("1");
     dest->first = listA;
     final = listA;
     listA = listA->next;
   } else {
+    puts("2");
     final = listB;
     listB = listB->next;
   }
   do {
     if (listA == NULL) {
+      puts("3");
       final->next = listB;
       final = final->next;
       listB = listB->next;
     }
     if (listB == NULL) {
+      puts("4");
       final->next = listA;
       final = final->next;
       listA = listA->next;
     }
     if (listA->element < listB->element) {
+      puts("5");
       final->next = listA;
       final = final->next;
       listA = listA->next;
     } else {
+      puts("6");
       final->next = listB;
       final = final->next;
       listB = listB->next;
