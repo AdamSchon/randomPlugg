@@ -112,7 +112,7 @@ void list_merge(list_t *source, list_t *dest)
 
   //puts((char *) **listA->element);
 
-  if (listA->element < listB->element) {
+  if ((int *) listA->element < (int *) listB->element) {
     puts("1");
     dest->first = listA;
     final = listA;
