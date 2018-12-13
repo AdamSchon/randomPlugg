@@ -61,7 +61,7 @@ int list_size(list_t *list)
     return(-1);
   }
 
-  link_t curr = list->first;
+  link_t *curr = list->first;
   if (curr == NULL) {
     return(0);
   }
@@ -81,8 +81,8 @@ void list_destroy(list_t *list)
     return;
   }
 
-  link_t curr = list->first;
-  link_t prev;
+  link_t *curr = list->first;
+  link_t *prev;
   do {
     prev = curr;
     curr = curr->next;
@@ -104,15 +104,15 @@ void list_merge(list_t *source, list_t *dest)
     return(dest);
   }
 
-  link_t listA = source->first;
-  link_t listB = dest->first;
+  link_t *listA = source->first;
+  link_t *listB = dest->first;
 
   if (*listA->element < *listB->element) {
     dest->first = listA;
-    link_t final = listA;
+    link_t *final = listA;
     listA = listA->next;
   } else {
-    link_t final = listB;
+    link_t *final = listB;
     listB = listB->next;
   }
 
