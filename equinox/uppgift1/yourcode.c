@@ -138,8 +138,9 @@ void list_merge(list_t *source, list_t *dest)
     }
   } while(listA != NULL && listB != NULL);
 
-  source->first = NULL;
-  source->last = NULL;
+  link_t new = list->last = link_create(NULL, NULL); //Creating dummy
+  source->first = new;
+  source->last = new;
   /// Alla länkar (och dess medföljande element, dock ej dummies)
   /// skall flyttas från source till dest.
 }
