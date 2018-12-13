@@ -32,7 +32,7 @@ list_t *list_create(void_cmp cmp)
 void list_insert(list_t *list, void *element)
 {
   link_t *cursor = list->first;
-  
+
   while (cursor->next && list->cmp(cursor->next->element, element) < 0)
     {
       cursor = cursor->next;
@@ -57,28 +57,92 @@ void list_insert(list_t *list, void *element)
 
 int list_size(list_t *list)
 {
-  /// TODO
+  if (list == NULL) {
+    return(-1);
+  }
 
-  /// Returnera antalet element i listan. Detta skall räknas ut
-  /// genom iteration över samtliga länkar.
-  return -1; 
+  link_t curr = list->first;
+  if (curr == NULL) {
+    return(0);
+  }
+
+  int i = 0;
+  do {
+    curr = curr->next;
+    i++;
+  } while (curr != NULL);
+
+  return i;
 }
 
 void list_destroy(list_t *list)
 {
-  /// TODO
+  if (list == NULL) {
+    return;
+  }
 
+  link_t curr = list->first;
+  link_t prev;
+  do {
+    prev = curr;
+    curr = curr->next;
+    free(prev->element);
+    free(prev);
+  } while (curr != NULL);
+
+  free(list);
   /// Ta bort listan, alla länkar och alla länkars alla element
 }
 
 
 void list_merge(list_t *source, list_t *dest)
 {
-  /// TODO
+  if (dest == NULL) {
+    return;
+  }
+  if (source == NULL) {
+    return(dest);
+  }
 
+  link_t listA = source->first;
+  link_t listB = dest->first;
+
+  if (*listA->element < *listB->element) {
+    dest->first = listA;
+    link_t final = listA;
+    listA = listA->next;
+  } else {
+    link_t final = listB;
+    listB = listB->next;
+  }
+
+  do {
+    if (listA == NULL) {
+      final->next = listB;
+      final = final->next;
+      listB = listB->next;
+    }
+    if (listB == NULL) {
+      final->next = listA;
+      final = final->next;
+      listA = listA->next;
+    }
+    if (*listA->element < *listB->element) {
+      final->next = listA;
+      final = final->next;
+      listA = listA->next;
+    } else {
+      final->next = listB;
+      final = final->next;
+      listB = listB->next;
+    }
+  } while(listA != NULL && listB != NULL);
+
+  source->first == NULL;
+  source->last == NULL;
   /// Alla länkar (och dess medföljande element, dock ej dummies)
   /// skall flyttas från source till dest.
-}  
+}
 
 /// Returns a string representation of the list to be printed
 /// No need to read or change this function!!
@@ -86,7 +150,7 @@ char *list_print(list_t *list, elem_to_string to_string)
 {
   char *result = calloc(2048, sizeof(char));
   strcat(result, "[");
-  
+
   for (link_t *cursor = list->first->next; cursor; cursor = cursor->next)
     {
       char *tmp = NULL;
@@ -97,7 +161,7 @@ char *list_print(list_t *list, elem_to_string to_string)
 
   int size = strlen(result);
   strcpy(result + (size > 1 ? size - 2 : size), "]");
-  
+
   return result;
 }
 
