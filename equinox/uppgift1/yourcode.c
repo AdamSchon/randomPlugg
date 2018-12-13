@@ -116,7 +116,6 @@ void list_merge(list_t *source, list_t *dest)
     final = listB;
     listB = listB->next;
   }
-  puts(final->element);
   do {
     if (listA == NULL) {
       final->next = listB;
@@ -137,7 +136,6 @@ void list_merge(list_t *source, list_t *dest)
       final = final->next;
       listB = listB->next;
     }
-    puts(final->element);
   } while(listA != NULL && listB != NULL);
 
   source->first = NULL;
