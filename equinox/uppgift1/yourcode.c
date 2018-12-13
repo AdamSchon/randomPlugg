@@ -107,7 +107,7 @@ void list_merge(list_t *source, list_t *dest)
   link_t *listA = source->first;
   link_t *listB = dest->first;
   link_t *final;
-  puts((char *) listA->element);
+  //puts((char *) listA->element);
   //puts((char *) *listA->element);
   puts((char *) &listA->element);
   //puts((char *) **listA->element);
