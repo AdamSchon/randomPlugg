@@ -128,7 +128,7 @@ void list_merge(list_t *source, list_t *dest)
       final = final->next;
       listA = listA->next;
     }
-    if (*listA->element < *listB->element) {
+    if (listA->element < listB->element) {
       final->next = listA;
       final = final->next;
       listA = listA->next;
@@ -139,8 +139,8 @@ void list_merge(list_t *source, list_t *dest)
     }
   } while(listA != NULL && listB != NULL);
 
-  source->first == NULL;
-  source->last == NULL;
+  source->first = NULL;
+  source->last = NULL;
   /// Alla länkar (och dess medföljande element, dock ej dummies)
   /// skall flyttas från source till dest.
 }
