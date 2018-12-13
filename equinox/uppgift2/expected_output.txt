@@ -1,0 +1,18 @@
+example1: 49
+example2: <bottom>
+example3: A/An java.lang.RuntimeException was thrown (Bottom used as a value!)
+example4: A/An java.lang.RuntimeException was thrown (Access to undeclared variable!)
+test0: 42.0
+test1: 1.0
+test2: 6.0
+test3: 7.0
+test4: 8.0
+test5: A/An java.lang.RuntimeException was thrown (Bottom used as a value!)
+test6: A/An java.lang.RuntimeException was thrown (Bottom used as a value!)
+test7: -4.0
+test8: -4.0
+test9: -4.0
+test10: A/An java.lang.RuntimeException was thrown (Bottom used as a value!)
+test11: A/An java.lang.RuntimeException was thrown (Bottom used as a value!)
+test12: 2.0
+testRegression: 8
