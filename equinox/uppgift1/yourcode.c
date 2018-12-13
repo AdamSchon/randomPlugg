@@ -70,7 +70,7 @@ int list_size(list_t *list)
   do {
     curr = curr->next;
     i++;
-  } while (curr->element != NULL);
+  } while (curr != NULL);
 
   return i;
 }
