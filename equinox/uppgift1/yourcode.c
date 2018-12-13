@@ -108,7 +108,7 @@ void list_merge(list_t *source, list_t *dest)
   link_t *listB = dest->first;
   link_t *final;
 
-  if (listA->element < listB->element) {
+  if ((int *) listA->element < (int *) listB->element) {
     puts("1");
     dest->first = listA;
     final = listA;
@@ -131,7 +131,7 @@ void list_merge(list_t *source, list_t *dest)
       final = final->next;
       listA = listA->next;
     }
-    if (listA->element < listB->element) {
+    if ((int *) listA->element < (int *) listB->element) {
       puts("5");
       final->next = listA;
       final = final->next;
