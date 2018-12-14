@@ -146,7 +146,7 @@ void list_merge(list_t *source, list_t *dest)
       final = final->next;
       listB = listB->next;
     }
-  } while(!listA == source->last && !listB == dest->last);
+  } while(!(listA == source->last) && !(listB == dest->last));
 
   source->first->next = source->last;
 
