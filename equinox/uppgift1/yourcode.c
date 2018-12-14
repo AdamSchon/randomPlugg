@@ -67,7 +67,7 @@ int list_size(list_t *list)
   do {
     curr = curr->next;
     i++;
-  } while (curr != list->last);
+  } while (curr->next != list->last);
 
   return i;
 }
@@ -85,7 +85,7 @@ void list_destroy(list_t *list)
     curr = curr->next;
     free(prev->element);
     free(prev);
-  } while (curr != list->last);
+  } while (curr->next != list->last);
 
   free(list);
   /// Ta bort listan, alla länkar och alla länkars alla element
@@ -109,7 +109,7 @@ void list_merge(list_t *source, list_t *dest)
 
   //puts((char *) **listA->element);
 
-  if ((int *) listA->element < (int *) listB->element) {
+  if (listA->element < listB->element) {
     puts("1");
     dest->first->next = listA;
     final = listA;
@@ -137,7 +137,7 @@ void list_merge(list_t *source, list_t *dest)
       listA->next = dest->last;
     }
 
-    if ((char *) listA->element < (char *) listB->element) {
+    if (listA->element < listB->element) {
       final->next = listA;
       final = final->next;
       listA = listA->next;
@@ -146,7 +146,7 @@ void list_merge(list_t *source, list_t *dest)
       final = final->next;
       listB = listB->next;
     }
-  } while(!(listA == source->last) && !(listB == dest->last));
+  } while(!(listA->next == source->last) && !(listB->next == dest->last));
 
   source->first->next = source->last;
 
