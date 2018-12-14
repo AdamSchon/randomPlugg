@@ -101,55 +101,19 @@ void list_merge(list_t *source, list_t *dest)
     return;
   }
 
-  link_t *listA = source->first->next;
-  link_t *listB = dest->first->next;
-  link_t *final;
-  //puts((char *) listA->element);
-  //puts((char *) *listA->element);
-
-  //puts((char *) **listA->element);
-
-  if (listA->element < listB->element) {
-    puts("1");
-    dest->first->next = listA;
-    final = listA;
-    listA = listA->next;
-  } else {
-    //puts((char *) listA->element);
-    puts("2");
-    final = listB;
-    listB = listB->next;
-  }
-
-
+  link_t *cursor = dest->first;
+  link_t *temp;
   do {
-    if (listA == source->last) {
-      do {
-        final->next = listB;
-        listB = listB->next;
-      } while (listB->next != dest->last);
-    }
-    if (listB == dest->last) {
-      do {
-        final->next = listA;
-        listA = listA->next;
-      } while (listA->next != source->last);
-      listA->next = dest->last;
-    }
-
-    if (listA->element < listB->element) {
-      final->next = listA;
-      final = final->next;
-      listA = listA->next;
+    if (cursor->next->element < source->first->next->element) {
+      cursor = cursor->next;
     } else {
-      final->next = listB;
-      final = final->next;
-      listB = listB->next;
+      temp = source->first->next->next;
+      source->first->next->next = cursor->next;
+      cursor->next = source->first->next->next;
+      source->first->next = temp;
+      cursor = cursor->next;
     }
-  } while(!(listA->next == source->last) && !(listB->next == dest->last));
-
-  source->first->next = source->last;
-
+  } while (source->first->next != source->last);
   /// Alla länkar (och dess medföljande element, dock ej dummies)
   /// skall flyttas från source till dest.
 }
