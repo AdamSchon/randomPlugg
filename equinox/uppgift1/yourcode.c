@@ -60,14 +60,17 @@ int list_size(list_t *list)
   if (list == NULL) {
     return(-1);
   }
+  if (list->first->next == NULL) {
+    return(0);
+  }
 
   link_t *curr = list->first->next;
-  int i = 0;
+  int i = 1;
 
   do {
     curr = curr->next;
     i++;
-  } while (curr->next != list->last);
+  } while (curr != list->last);
 
   return i;
 }
@@ -85,7 +88,7 @@ void list_destroy(list_t *list)
     curr = curr->next;
     free(prev->element);
     free(prev);
-  } while (curr->next != list->last);
+  } while (curr != list->last);
 
   free(list);
   /// Ta bort listan, alla länkar och alla länkars alla element
@@ -113,7 +116,7 @@ void list_merge(list_t *source, list_t *dest)
       source->first->next = temp;
       cursor = cursor->next;
     }
-  } while (source->first->next != source->last);
+  } while (source->first->next != NULL);
   /// Alla länkar (och dess medföljande element, dock ej dummies)
   /// skall flyttas från source till dest.
 }
