@@ -61,16 +61,13 @@ int list_size(list_t *list)
     return(-1);
   }
 
-  link_t *curr = list->first;
-  if (curr == NULL) {
-    return(0);
-  }
-
+  link_t *curr = list->first->next;
   int i = 0;
+
   do {
     curr = curr->next;
     i++;
-  } while (curr->next != NULL);
+  } while (curr != list->last);
 
   return i;
 }
@@ -81,14 +78,14 @@ void list_destroy(list_t *list)
     return;
   }
 
-  link_t *curr = list->first;
+  link_t *curr = list->first->next;
   link_t *prev;
   do {
     prev = curr;
     curr = curr->next;
     free(prev->element);
     free(prev);
-  } while (curr != NULL);
+  } while (curr != list->last);
 
   free(list);
   /// Ta bort listan, alla länkar och alla länkars alla element
@@ -104,8 +101,8 @@ void list_merge(list_t *source, list_t *dest)
     return;
   }
 
-  link_t *listA = source->first;
-  link_t *listB = dest->first;
+  link_t *listA = source->first->next;
+  link_t *listB = dest->first->next;
   link_t *final;
   //puts((char *) listA->element);
   //puts((char *) *listA->element);
@@ -114,7 +111,7 @@ void list_merge(list_t *source, list_t *dest)
 
   if ((int *) listA->element < (int *) listB->element) {
     puts("1");
-    dest->first = listA;
+    dest->first->next = listA;
     final = listA;
     listA = listA->next;
   } else {
@@ -123,36 +120,36 @@ void list_merge(list_t *source, list_t *dest)
     final = listB;
     listB = listB->next;
   }
+
+
   do {
-    if (listA == NULL) {
-      puts("3");
-      final->next = listB;
-      final = final->next;
-      listB = listB->next;
+    if (listA == source->last) {
+      do {
+        final->next = listB;
+        listB = listB->next;
+      } while (listB != dest->last);
     }
-    if (listB == NULL) {
-      puts("4");
-      final->next = listA;
-      final = final->next;
-      dest->last = final;
-      listA = listA->next;
+    if (listB == dest->last) {
+      do {
+        final->next = listA;
+        listA = listA->next;
+      } while (listA->next != source->last);
+      listA->next = dest->last;
     }
+
     if ((char *) listA->element < (char *) listB->element) {
-      puts("5");
       final->next = listA;
       final = final->next;
       listA = listA->next;
     } else {
-      puts("6");
       final->next = listB;
       final = final->next;
       listB = listB->next;
     }
-  } while(!listA == NULL && !listB == NULL);
+  } while(!listA == source->last && !listB == dest->last);
 
-  link_t *new = link_create(NULL, NULL); //Creating dummy
-  source->first = new;
-  source->last = new;
+  source->first->next = source->last;
+
   /// Alla länkar (och dess medföljande element, dock ej dummies)
   /// skall flyttas från source till dest.
 }
