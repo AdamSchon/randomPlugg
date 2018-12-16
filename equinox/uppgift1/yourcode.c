@@ -107,20 +107,23 @@ void list_merge(list_t *source, list_t *dest)
   link_t *cursor = dest->first;
   link_t *temp;
   do {
-    if (dest->cmp(source->first->next->element, cursor->next->element) < 0) {
+    if (dest->cmp(source->first->next->element, cursor->next->element) > 0) {
+      //source->first->next is bigger than cursor
       puts("1");
       cursor = cursor->next;
     } else {
       puts("2");
+      //Putting source first next before cursor->next.
+
       temp = source->first->next->next;
       source->first->next->next = cursor->next;
-      cursor->next = source->first->next->next;
+      cursor = source->first->next;
       source->first->next = temp;
-      cursor = cursor->next;
     }
   } while (source->first->next != NULL && cursor->next != NULL);
   /// Alla länkar (och dess medföljande element, dock ej dummies)
   /// skall flyttas från source till dest.
+
 }
 
 /// Returns a string representation of the list to be printed
