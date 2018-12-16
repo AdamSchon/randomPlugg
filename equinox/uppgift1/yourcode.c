@@ -130,6 +130,12 @@ void list_merge(list_t *source, list_t *dest)
       source->first->next = temp;
     }
   } while (source->first->next != NULL && cursor->next != NULL);
+
+  do {
+    cursor->next = source->first->next;
+    dest->last = cursor->next;
+    cursor = cursor->next;
+  } while (source->first->next != NULL);
   /// Alla länkar (och dess medföljande element, dock ej dummies)
   /// skall flyttas från source till dest.
 
