@@ -107,7 +107,7 @@ void list_merge(list_t *source, list_t *dest)
   link_t *cursor = dest->first;
   link_t *temp;
   do {
-    if (dest->cmp(cursor->next->element, source->first->next->element)) {
+    if (dest->cmp(source->first->next->element, cursor->next->element,)) {
       puts("1");
       cursor = cursor->next;
     } else {
