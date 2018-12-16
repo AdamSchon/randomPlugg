@@ -126,7 +126,8 @@ void list_merge(list_t *source, list_t *dest)
 
       temp = source->first->next->next;
       source->first->next->next = cursor->next;
-      cursor = source->first->next;
+      cursor->next = source->first->next;
+      cursor = cursor->next;
       source->first->next = temp;
     }
   } while (source->first->next != NULL && cursor->next != NULL);
