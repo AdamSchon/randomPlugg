@@ -1,5 +1,5 @@
 /*
-  NOTE! 
+  NOTE!
   This is the only file you are allowed to make changes too as it
   is the only file that is handed in by make handin!
 
@@ -15,6 +15,15 @@
 ////////////////////////////////////////////////////////////////////////////////
 /// ADDITIONS //////////////////////////////////////////////////////////////////
 
+final class Float extends Constant {
+    public Float(float value) {
+        super(value);
+    }
+
+    public boolean isFloat() {
+        return true;
+    }
+}
 
 ////////////////////////////////////////////////////////////////////////////////
 /// DIRTY EXTENSIONS ///////////////////////////////////////////////////////////
@@ -25,7 +34,11 @@ class Calculation {
         if (a.isInteger() && b.isInteger()) {
             return new Integer(a.value().intValue() + b.value().intValue());
         } else {
+          if(a.isFloat() && b.isFloat()){
+            return new Float(a.value().floatValue() + b.value().floatValue());
+          } else {
             throw new RuntimeException("Bottom used as a value!");
+          }
         }
     }
 
@@ -33,7 +46,11 @@ class Calculation {
         if (a.isInteger() && b.isInteger()) {
             return new Integer(a.value().intValue() - b.value().intValue());
         } else {
+          if(a.isFloat() && b.isFloat()){
+            return new Float(a.value().floatValue() - b.value().floatValue());
+          }else {
             throw new RuntimeException("Bottom used as a value!");
+          }
         }
     }
 }
@@ -52,6 +69,10 @@ abstract class Constant extends Expression {
         return false;
     }
 
+    public boolean isFloat() {
+        return false;
+    }
+
     public boolean isBottom() {
         return false;
     }
@@ -61,17 +82,16 @@ abstract class Constant extends Expression {
     }
 
     public Number value() {
-        return this.value; 
+        return this.value;
     }
-    
+
     public String toString() {
-        return this.value().toString(); 
+        return this.value().toString();
     }
 }
 
 ////////////////////////////////////////////////////////////////////////////////
 /// IGNORE /////////////////////////////////////////////////////////////////////
 
-// Required by Java so we can name the file YourCode.java 
+// Required by Java so we can name the file YourCode.java
 public class YourCode {}
-
