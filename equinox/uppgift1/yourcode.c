@@ -103,7 +103,39 @@ void list_merge(list_t *source, list_t *dest)
   if (source == NULL) {
     return;
   }
+  link_t *cursor = dest->first;
+  do {
+  while (cursor->next && dest->cmp(cursor->next->element, source->first->next->element) < 0)
+    {
+      cursor = cursor->next;
+    }
 
+  if (cursor->next)
+    {
+      if (dest->cmp(cursor->next->element, source->first->next->element))
+        {
+          link_t *temp = source->first->next->next;
+          source->first->next->next = cursor->next;
+          cursor->next = source->first->next;
+          source->first->next = temp;
+        }
+      else
+        {
+          puts("KOM HIT, VARFOR?");
+          cursor->next->element = element;
+        }
+    }
+  else
+    {
+      link_t *temp = source->first->next->next;
+      source->first->next->next = cursor->next;
+      list->last = cursor->next = source->first->next;
+      source->first->next = temp;
+    }
+  } while(source->first->next != NULL);
+}
+
+/*
   link_t *cursor = dest->first;
   link_t *temp;
 
@@ -130,13 +162,15 @@ void list_merge(list_t *source, list_t *dest)
       cursor = cursor->next;
       source->first->next = temp;
     }
-  } while (source->first->next != source->last && cursor->next != NULL);
+  } while (source->first->next != NULL && cursor->next != NULL);
 
   do {
     cursor->next = source->first->next;
     dest->last = cursor->next;
     cursor = cursor->next;
   } while (source->first->next != NULL);
+
+  */
   /// Alla länkar (och dess medföljande element, dock ej dummies)
   /// skall flyttas från source till dest.
 
