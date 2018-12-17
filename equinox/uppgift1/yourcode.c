@@ -88,7 +88,7 @@ void list_destroy(list_t *list)
     curr = curr->next;
     free(prev->element);
     free(prev);
-  } while (curr->next != NULL);
+  } while (curr->next);
 
   free(curr->element);
   free(curr);
