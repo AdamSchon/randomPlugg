@@ -4,14 +4,14 @@
 #include <assert.h>
 #include "interned.h"
 
-#define No_Buckets 17  
+#define No_Buckets 17
 
 typedef struct entry entry_t;
 
 struct entry
 {
   char *string;
-  int refcount; 
+  int refcount;
   entry_t *next;
 };
 
@@ -26,7 +26,7 @@ static unsigned long string_hash(char *str)
     {
       result = result * 31 + *str;
     }
-  while (*++str != '\0'); 
+  while (*++str != '\0');
   return result;
 }
 
@@ -53,7 +53,7 @@ char *intstr_create(char *str)
   unsigned long bucket = string_hash(str) % No_Buckets;
   entry_t *entry = buckets[bucket];
 
-  /// Search through the bucket for a string 
+  /// Search through the bucket for a string
   while (entry)
     {
       /// Use strcmp here -- because we expect str to be not interned
@@ -78,7 +78,21 @@ char *intstr_create(char *str)
 /// Returns true if str is interned, else false
 bool intstr_is_interned(char *str)
 {
-  /// TODO
+  /// Get the hash code for the string and use it to find the
+  /// right bucket
+  unsigned long bucket = string_hash(str) % No_Buckets;
+  entry_t *entry = buckets[bucket];
+
+  /// Search through the bucket for a string
+  while (entry)
+    {
+      /// Use strcmp here -- because we expect str to be not interned
+      if (strcmp(str, entry->string) == 0)
+        {
+          return(true);
+        }
+      entry = entry->next;
+    }
   return false; /// remove -- placed here to get the file to compile
 }
 
@@ -87,7 +101,35 @@ bool intstr_is_interned(char *str)
 /// memory.
 void intstr_destroy(char *str)
 {
-  /// TODO
+  /// Get the hash code for the string and use it to find the
+  /// right bucket
+  unsigned long bucket = string_hash(str) % No_Buckets;
+  entry_t *entry = buckets[bucket];
+  entry_t *prev;
+  /// Search through the bucket for a string
+  if (strcmp(str, entry->string) == 0) {
+    buckets[bucket] = entry->next;
+    free(entry);
+    return;
+  }
+
+  while (entry)
+    {
+      /// Use strcmp here -- because we expect str to be not interned
+      if (strcmp(str, entry->string) == 0)
+        {
+          if (entry->refcount > 1) {
+            entry->refcount--;
+            return;
+          } else {
+            //refcount is 0.
+            prev->next = entry->next;
+            free(entry);
+          }
+        }
+      prev = entry
+      entry = entry->next;
+    }
 }
 
 /// Return the refcount for str if str is interned, else 0.
