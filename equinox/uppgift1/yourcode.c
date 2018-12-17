@@ -122,18 +122,17 @@ void list_merge(list_t *source, list_t *dest)
       else
         {
           puts("KOM HIT, VARFOR?");
-          cursor->next->element = element;
+          cursor->next->element = NULL;
         }
     }
   else
     {
       link_t *temp = source->first->next->next;
       source->first->next->next = cursor->next;
-      list->last = cursor->next = source->first->next;
+      dest->last = cursor->next = source->first->next;
       source->first->next = temp;
     }
   } while(source->first->next != NULL);
-}
 
 /*
   link_t *cursor = dest->first;
