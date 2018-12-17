@@ -3,7 +3,7 @@ package org.ioopm.planner;
 import java.util.*;
 
 
-private class Line extends Edge {
+private class Line implements Edge {
   private int line;
 
   public Line(final Node n1, final Node n2, final int weight, int newLine) {
