@@ -16,7 +16,7 @@
 /// ADDITIONS //////////////////////////////////////////////////////////////////
 
 final class Float extends Constant {
-    public Float(float value) {
+    public Float(double value) {
         super(value);
     }
 
