@@ -3,24 +3,6 @@ package org.ioopm.planner;
 import java.util.*;
 
 
-private class Line implements Edge {
-  private int line;
-
-  public Line(final Node n1, final Node n2, final int weight, int newLine) {
-    super(n1, n2, weight);
-    this.lane = newLine;
-  }
-
-  public int getLine() {
-    return(this.line);
-  }
-}
-
-private class StopOver extends Edge {
-  public StopOver(final Node n1, final Node n2) {
-    super(n1, n2, 8);
-  }
-}
 /// TODO: lägg till nya bågar --- OBS!! Du måste se till att de
 /// nya bågarna används när grafen byggs upp också, vilket sker i addLine().
 /// Du får själv lista ut vilken typ av båge som skall användas var.
@@ -29,6 +11,26 @@ public class Trip {
     private final Node start;
     private final Node destination;
     private List<Node> route;
+
+
+    private class Line extends Edge {
+      private int line;
+
+      public Line(final Node n1, final Node n2, final int weight, int newLine) {
+        super(n1, n2, weight);
+        this.lane = newLine;
+      }
+
+      public int getLine() {
+        return(this.line);
+      }
+    }
+
+    private class StopOver extends Edge {
+      public StopOver(final Node n1, final Node n2) {
+        super(n1, n2, 8);
+      }
+    }
 
     /// If line == [a, b, c] and weights == [8, 3], then
     /// this creates the following network:
