@@ -37,22 +37,37 @@ class Calculation {
           if(a.isFloat() && b.isFloat()){
             return new Float(a.value().doubleValue() + b.value().doubleValue());
           } else {
+            if(a.isInteger() && b.isFloat()){
+              return new Float(a.value().intValue() + b.value().doubleValue());
+            } else {
+              if(a.isFloat() && b.isInteger()){
+                return new Float(a.value().doubleValue() + b.value().intValue());
+              } else {
             throw new RuntimeException("Bottom used as a value!");
           }
         }
+      }
     }
+  }
 
     public static Constant sub(Constant a, Constant b) {
-        if (a.isInteger() && b.isInteger()) {
-            return new Integer(a.value().intValue() - b.value().intValue());
+      if (a.isInteger() && b.isInteger()) {
+          return new Integer(a.value().intValue() - b.value().intValue());
+      } else {
+        if(a.isFloat() && b.isFloat()){
+          return new Float(a.value().doubleValue() - b.value().doubleValue());
         } else {
-          if(a.isFloat() && b.isFloat()){
-            return new Float(a.value().doubleValue() - b.value().doubleValue());
-          }else {
-            throw new RuntimeException("Bottom used as a value!");
-          }
+          if(a.isInteger() && b.isFloat()){
+            return new Float(a.value().intValue() - b.value().doubleValue());
+          } else {
+            if(a.isFloat() && b.isInteger()){
+              return new Float(a.value().doubleValue() - b.value().intValue());
+            } else {
+          throw new RuntimeException("Bottom used as a value!");
         }
+      }
     }
+  }
 }
 
 ////////////////////////////////////////////////////////////////////////////////
