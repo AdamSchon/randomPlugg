@@ -64,6 +64,7 @@ class Calculation {
               return new Float(a.value().doubleValue() - b.value().intValue());
             } else {
           throw new RuntimeException("Bottom used as a value!");
+          }
         }
       }
     }
