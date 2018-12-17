@@ -2,6 +2,25 @@ package org.ioopm.planner;
 
 import java.util.*;
 
+
+private class Line extends Edge {
+  private int line;
+
+  public Edge(final Node n1, final Node n2, final int weight, int newLine) {
+    super(n1, n2, weight);
+    this.lane = newLine;
+  }
+
+  public int getLine() {
+    return(this.line);
+  }
+}
+
+private class StopOver extends Edge {
+  public Edge(final Node n1, final Node n2) {
+    super(n1, n2, 8);
+  }
+}
 /// TODO: lägg till nya bågar --- OBS!! Du måste se till att de
 /// nya bågarna används när grafen byggs upp också, vilket sker i addLine().
 /// Du får själv lista ut vilken typ av båge som skall användas var.
@@ -30,13 +49,23 @@ public class Trip {
             Set<Node> existing = Network.getNodesByName(line[i].name());
             /// TODO: write the rest of the logic here
             /// FWIW, the loop below shows how to connect two nodes with an Edge edge
+            if (!existing.isEmpty()) {
+              nPrime = new Node(n.name(), n.connections());
+              for (Node n : existing) {
+                StopOver edge = new StopOver(n, nPrime);
+                n.connectTo(edge);
+                nPrime.connectTo(edge);
+                nodes.add(nPrime);
+              }
+              line[i] = nPrime;
+            }
         }
 
         /// Connect the two nodes with a new Edge edge
         for (int i = 0; i < weigths.length; ++i) {
             Node from = line[i];
             Node to = line[i+1];
-            Edge edge = new Edge(from, to, weigths[i]);
+            Edge edge = new Line(from, to, weigths[i],lineNumber);
             from.connectTo(edge);
             to.connectTo(edge);
             nodes.add(from);
@@ -58,6 +87,8 @@ public class Trip {
 
             result += from.name() + "\n";
 
+            result += "Line " + from.getEdgeTo(to).getLine() + ", " + from.getEdgeTo(to).weight() + " minuter \n";
+
             from = to;
         }
         result += from.name() + "\n";
@@ -69,6 +100,11 @@ public class Trip {
         /// TODO: Finish
 
         int stopOvers = 0;
+        for (int i = 1; i > route.length(); i++) {
+          if (!(route[i].getLine() == route[i-1].getLine())) {
+            stopOvers++;
+          }
+        }
         return stopOvers;
     }
 
