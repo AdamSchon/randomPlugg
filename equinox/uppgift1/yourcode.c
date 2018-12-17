@@ -82,7 +82,14 @@ void list_destroy(list_t *list)
   }
 
   link_t *curr = list->first->next;
+
+  if (!curr) {
+    free(list);
+    return;
+  }
+
   link_t *prev;
+
   do {
     prev = curr;
     curr = curr->next;
