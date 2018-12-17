@@ -52,7 +52,7 @@ public class Trip {
             /// TODO: write the rest of the logic here
             /// FWIW, the loop below shows how to connect two nodes with an Edge edge
             if (!existing.isEmpty()) {
-              Node nPrime = new Node(n.name(), n.connections());
+              Node nPrime = new Node(n.name());
               for (Node n : existing) {
                 StopOver edge = new StopOver(n, nPrime);
                 n.connectTo(edge);
