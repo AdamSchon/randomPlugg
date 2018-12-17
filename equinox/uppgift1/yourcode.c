@@ -88,8 +88,10 @@ void list_destroy(list_t *list)
     curr = curr->next;
     free(prev->element);
     free(prev);
-  } while (curr != NULL);
+  } while (curr->next != NULL);
 
+  free(curr->element);
+  free(curr);
   free(list);
   /// Ta bort listan, alla länkar och alla länkars alla element
 }
