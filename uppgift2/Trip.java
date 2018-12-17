@@ -18,7 +18,7 @@ public class Trip {
 
       public Line(final Node n1, final Node n2, final int weight, int newLine) {
         super(n1, n2, weight);
-        this.lane = newLine;
+        this.line = newLine;
       }
 
       public int getLine() {
@@ -52,7 +52,7 @@ public class Trip {
             /// TODO: write the rest of the logic here
             /// FWIW, the loop below shows how to connect two nodes with an Edge edge
             if (!existing.isEmpty()) {
-              nPrime = new Node(n.name(), n.connections());
+              Node nPrime = new Node(n.name(), n.connections());
               for (Node n : existing) {
                 StopOver edge = new StopOver(n, nPrime);
                 n.connectTo(edge);
