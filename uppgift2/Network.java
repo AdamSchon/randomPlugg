@@ -16,7 +16,7 @@ public class Network {
         }
         return result;
     }
-    
+
     private static Node dijkstraGetClosest(Node start, HashMap<Node, Integer> distances) {
         int distance = Integer.MAX_VALUE;
         Node end = start;
@@ -30,7 +30,7 @@ public class Network {
         }
         return end;
     }
-    
+
     public static List<Node> dijkstra(final Trip trip) {
         final Node from = trip.start();
         final Node to = trip.destination();
@@ -40,7 +40,7 @@ public class Network {
 
         // Assign to every node a tentative distance value: set it
         // to zero for our initial node and to infinity for all
-        // other nodes. 
+        // other nodes.
         final HashMap<Node, Integer> distances = new HashMap<>();
         for (Node n : unvisited) {
             distances.put(n, Integer.MAX_VALUE);
@@ -80,7 +80,7 @@ public class Network {
             // Otherwise, select the unvisited node that is marked
             // with the smallest tentative distance, set it as the new
             // "current node", and go back to step 3.
-            Node closestToInitial = to; 
+            Node closestToInitial = to;
             for (Node n : unvisited) {
                 if (distances.get(closestToInitial) > distances.get(n)) {
                     closestToInitial = n;

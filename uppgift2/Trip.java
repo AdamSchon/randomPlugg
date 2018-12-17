@@ -4,7 +4,7 @@ import java.util.*;
 
 /// TODO: lägg till nya bågar --- OBS!! Du måste se till att de
 /// nya bågarna används när grafen byggs upp också, vilket sker i addLine().
-/// Du får själv lista ut vilken typ av båge som skall användas var. 
+/// Du får själv lista ut vilken typ av båge som skall användas var.
 
 public class Trip {
     private final Node start;
@@ -29,7 +29,7 @@ public class Trip {
             /// existing is E from the algorithm in the description
             Set<Node> existing = Network.getNodesByName(line[i].name());
             /// TODO: write the rest of the logic here
-            /// FWIW, the loop below shows how to connect two nodes with an Edge edge 
+            /// FWIW, the loop below shows how to connect two nodes with an Edge edge
         }
 
         /// Connect the two nodes with a new Edge edge
@@ -43,12 +43,12 @@ public class Trip {
             nodes.add(to);
         }
     }
-    
+
     /// Calculates the travel time for the proposed route
     public String routeToString() {
         /// TODO: Add route information (times, lines, stop-overs)
         /// Note, you can get information from edges using the info() method
-        
+
         String result = "";
 
         final LinkedList<Node> tmp = new LinkedList<>(route);
@@ -90,8 +90,8 @@ public class Trip {
 
         return time;
     }
-    
-    /// Create a new trip 
+
+    /// Create a new trip
     public Trip(final Node start, final Node destination) {
         this.start = start;
         this.destination = destination;
@@ -99,12 +99,12 @@ public class Trip {
 
     /// Get the intended start
     public Node start() {
-        return this.start;                                                                  
+        return this.start;
     }
 
     /// Get the intended destination
     public Node destination() {
-        return this.destination;                                 
+        return this.destination;
     }
 
     /// Sets the proposed route for the trip

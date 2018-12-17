@@ -25,7 +25,7 @@ public class Node {
         }
         return null;
     }
-    
+
     public void connectTo(Edge edge) {
         this.connections.add(edge);
     }

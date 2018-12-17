@@ -3,8 +3,8 @@ package org.ioopm.planner;
 public class TripPlanner {
     public static void main(String[] args) {
         if (args.length < 1) {
-            System.err.println("The program takes as input " + 
-                               "the absolute name of a class that sets" + 
+            System.err.println("The program takes as input " +
+                               "the absolute name of a class that sets" +
                                " up the graph network, e.g., 'org.ioopm.planner.PrinsEugen'.");
             return;
         }
@@ -18,7 +18,7 @@ public class TripPlanner {
         Network network = new Network();
 
         Trip best = null;
-        
+
         for (Node start : Network.getNodesByName("Kortedala")) {
             for (Node stop : Network.getNodesByName("S:t Sigfrids plan")) {
                 Trip trip = new Trip(start, stop);
@@ -29,7 +29,7 @@ public class TripPlanner {
                 }
             }
         }
-                    
+
         System.out.println(best.routeToString());
         System.out.println("Total restid: " + best.travelTime() + " minuter, " + best.numberOfStopOvers() + " byten\n");
     }

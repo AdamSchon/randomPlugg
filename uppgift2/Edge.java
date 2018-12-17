@@ -26,7 +26,7 @@ public class Edge {
     public String info() {
         return this.weight + " minuter";
     }
-    
+
     public final String toString() {
         return "Don't use the toString() method!";
     }
