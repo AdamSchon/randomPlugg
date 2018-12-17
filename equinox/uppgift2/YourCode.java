@@ -35,7 +35,7 @@ class Calculation {
             return new Integer(a.value().intValue() + b.value().intValue());
         } else {
           if(a.isFloat() && b.isFloat()){
-            return new Float(a.value().floatValue() + b.value().floatValue());
+            return new Float(a.value().doubleValue() + b.value().doubleValue());
           } else {
             throw new RuntimeException("Bottom used as a value!");
           }
@@ -47,7 +47,7 @@ class Calculation {
             return new Integer(a.value().intValue() - b.value().intValue());
         } else {
           if(a.isFloat() && b.isFloat()){
-            return new Float(a.value().floatValue() - b.value().floatValue());
+            return new Float(a.value().doubleValue() - b.value().doubleValue());
           }else {
             throw new RuntimeException("Bottom used as a value!");
           }
