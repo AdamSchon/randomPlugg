@@ -30,6 +30,10 @@ public class Trip {
       public StopOver(final Node n1, final Node n2) {
         super(n1, n2, 8);
       }
+
+      public int getLine() {
+        return(-1);
+      }
     }
 
     /// If line == [a, b, c] and weights == [8, 3], then
@@ -67,7 +71,7 @@ public class Trip {
         for (int i = 0; i < weigths.length; ++i) {
             Node from = line[i];
             Node to = line[i+1];
-            Edge edge = new Line(from, to, weigths[i],lineNumber);
+            Line edge = new Line(from, to, weigths[i],lineNumber);
             from.connectTo(edge);
             to.connectTo(edge);
             nodes.add(from);
@@ -88,8 +92,8 @@ public class Trip {
             Node to = tmp.pop();
 
             result += from.name() + "\n";
-
-            result += "Line " + from.getEdgeTo(to).getLine() + ", " + from.getEdgeTo(to).weight() + " minuter \n";
+            Line line = from.getEdgeTo(to);
+            result += "Line " + line.getLine() + ", " + line(to).weight() + " minuter \n";
 
             from = to;
         }
@@ -103,7 +107,8 @@ public class Trip {
 
         int stopOvers = 0;
         for (int i = 1; i > route.length(); i++) {
-          if (!(route[i].getLine() == route[i-1].getLine())) {
+          Line line = route[i].getEdgeTo(route[i-1]);
+          if (line.getLine() < 0) {
             stopOvers++;
           }
         }
