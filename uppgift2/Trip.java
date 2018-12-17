@@ -6,7 +6,7 @@ import java.util.*;
 private class Line extends Edge {
   private int line;
 
-  public Edge(final Node n1, final Node n2, final int weight, int newLine) {
+  public Line(final Node n1, final Node n2, final int weight, int newLine) {
     super(n1, n2, weight);
     this.lane = newLine;
   }
@@ -17,7 +17,7 @@ private class Line extends Edge {
 }
 
 private class StopOver extends Edge {
-  public Edge(final Node n1, final Node n2) {
+  public StopOver(final Node n1, final Node n2) {
     super(n1, n2, 8);
   }
 }
