@@ -9,7 +9,7 @@ public class Driver {
     private static Expression sub(Expression e1, Expression e2) { return new Subtraction(e1, e2); }
 
     private static Expression i(int i) { return new Integer(i); }
-    private static Expression f(double i) { throw new DriverNotFixedException(); } /// TODO: return new float instead
+    private static Expression f(double i) { return new Float(i); } /// TODO: return new float instead
     private static Expression b() { return new Bottom(); }
 
     private static void execute(String msg, Statement s) {
