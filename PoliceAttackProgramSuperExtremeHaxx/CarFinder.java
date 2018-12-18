@@ -2,7 +2,7 @@ import java.lang.Math;
 
 public class CarFinder {
 
-  private Car<List> Cars;
+  private List<Car> Cars = new ArrayList<>();
 
   public CarFinder(){
 
