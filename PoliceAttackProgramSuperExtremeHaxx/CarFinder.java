@@ -19,6 +19,7 @@ public class CarFinder {
     int closest = 99999;
     for (Car c : Cars) {
       if (c.calc_distance(x,y) < closest) {
+        System.out.println("hej");
         closestCar = c;
       }
     }
