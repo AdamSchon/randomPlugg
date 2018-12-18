@@ -31,6 +31,7 @@ public class CarFinder {
     CarFinder CF = new CarFinder();
     for (int i = 0; i < 10; i++) {
       Car newCar = new Car(Integer.toString(i), (int) Math.random()*10, (int) Math.random()*10);
+      CF.addCar(newCar);
     }
 
     Car closest = CF.findClosestCar(1,1);
