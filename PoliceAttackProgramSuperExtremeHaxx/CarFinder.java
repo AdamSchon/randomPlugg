@@ -15,7 +15,7 @@ public class CarFinder {
   }
 
   public Car findClosestCar(int x, int y) {
-    Car closestCar;
+    Car closestCar = null;
     int closest = 99999;
     for (Car c : Cars) {
       if (c.calc_distance(x,y) < closest) {
