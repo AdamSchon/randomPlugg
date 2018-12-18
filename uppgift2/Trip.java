@@ -92,8 +92,8 @@ public class Trip {
             Node to = tmp.pop();
 
             result += from.name() + "\n";
-            Line line = from.getEdgeTo(to);
-            result += "Line " + line.getLine() + ", " + line(to).weight() + " minuter \n";
+            Line line = (Line) from.getEdgeTo(to);
+            result += "Line " + line.getLine() + ", " + line.info() + "\n";
 
             from = to;
         }
