@@ -2,10 +2,10 @@ import java.lang.Math;
 
 public class CarFinder {
 
-  private List<Car> Cars = new ArrayList<>();
+  private List<Car> Cars;
 
   public CarFinder(){
-
+    this.Cars = new LinkedList<>();
   }
 
   public void addCar(Car c) {
