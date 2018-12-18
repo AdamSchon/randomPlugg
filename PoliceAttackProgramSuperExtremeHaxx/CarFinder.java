@@ -17,10 +17,8 @@ public class CarFinder {
   public Car findClosestCar(int x, int y) {
     Car closestCar = null;
     int closest = 99999;
-    System.out.println(this.Cars.size());
     for (Car c : this.Cars) {
       if (c.calc_distance(x,y) < closest) {
-        System.out.println("hej");
         closestCar = c;
       }
     }
