@@ -1,0 +1,68 @@
+Apple
+A1
+10
+#-----
+Banana
+A2
+10
+#-----
+Clementine
+A3
+10
+#-----
+Durian
+A4
+10
+#-----
+Fig
+A5
+10
+#-----
+Grapefruit
+A6
+10
+#-----
+Kumquat
+A7
+10
+#----- Lägger felaktigt citron där kumquat redan ligger!
+Lemon
+A7
+10
+#----- Borde lägga till 10 till den existerande hyllan på Apple
+Apple
+A1
+10
+#----- Lägger till en en ny hylla B2 med 10 bananer
+Banana
+B2
+10
+#-----
+Clementine
+B3
+10
+#----- Borde lägga till 100 till den existerande hyllan på Durian
+Durian
+A4
+100
+#----- Borde ignoreras eftersom det redan ligger durianfrukt på A4
+Fig
+A4
+10
+#----- Lägger till en en ny hylla under Grapefruit
+Grapefruit
+B6
+10
+#----- Lägger till en en ny hylla under Grapefruit
+Grapefruit
+C6
+10
+#----- Lägger till en en ny hylla under Grapefruit
+Grapefruit
+D6
+10
+#----- Borde dra bort 10 grapefrukter!
+Grapefruit
+D6
+-10
+!
