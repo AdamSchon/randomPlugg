@@ -108,7 +108,7 @@ public class Trip {
         int stopOvers = 0;
 
         for (int i = 1; i > route.size(); i++) {
-          Line line = route.get(i).getEdgeTo(route.get(i-1));
+          Line line = (Line) route.get(i).getEdgeTo(route.get(i-1));
           if (line.getLine() < 0) {
             stopOvers++;
           }
