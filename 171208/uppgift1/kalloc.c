@@ -86,7 +86,7 @@ size_t kalloc_internal_size(size_t external_size_in_bytes)
 
 /// Allocates N bytes of memory where N = size_in_bytes + object +
 /// magic number. Initialises object from file, func and line and
-/// uses the global magic number. Returns a userland pointer. 
+/// uses the global magic number. Returns a userland pointer.
 void *kalloc_calloc(size_t size_in_bytes, const char *file, const char * func, size_t line)
 {
   assert(kalloc_magic != 0);
@@ -155,7 +155,7 @@ void *kalloc_calloc(size_t size_in_bytes, const char *file, const char * func, s
 /// NOTE: *mem is an internal pointer to an allocated block
 ///
 /// NOTE -- if you want to test this function from your main file, remove the static
-///         keyword and add obj_t **kalloc_inner_find(obj_t **, void *); to kalloc.h. 
+///         keyword and add obj_t **kalloc_inner_find(obj_t **, void *); to kalloc.h.
 ///         (You can also use the commented main function after the end of the important
 ///         part.)
 ///
@@ -164,28 +164,34 @@ obj_t **kalloc_inner_find(obj_t **mem, void *p)
 {
   /// TODO: implement
 
+  do {
+    if (kalloc_header(p) == *mem) return mem;
+  }
+  mem = &(*mem)->next;
+} while(*mem);
+
   return NULL; /// Just to make it compile -- you may need to change this
 }
 /// ================================ End of the important part ===================================
 ///
 /// Hint: you can look in kalloc_free to see how kalloc_inner_find is being used.
-/// 
+///
 
-/* 
+/*
 /// The following code tests example 1 and 2 above -- you can
 /// uncomment this code and compile kalloc.c as a program of its
 /// own if you want to test it.
 
 int main(int argc, char *argv[argc])
 {
-  kalloc_init(0xC0DEFEFE); 
-  void *a = kalloc(42); 
-  void *b = kalloc(47); 
+  kalloc_init(0xC0DEFEFE);
+  void *a = kalloc(42);
+  void *b = kalloc(47);
   void *c = kalloc(52);
 
-  assert(*kalloc_inner_find(&first, a) == kalloc_header(a)); 
-  assert(*kalloc_inner_find(&first, b) == kalloc_header(b)); 
-  assert(*kalloc_inner_find(&first, c) == kalloc_header(c)); 
+  assert(*kalloc_inner_find(&first, a) == kalloc_header(a));
+  assert(*kalloc_inner_find(&first, b) == kalloc_header(b));
+  assert(*kalloc_inner_find(&first, c) == kalloc_header(c));
 
   return 0;
 }
@@ -256,4 +262,3 @@ bool kalloc_check_integrity(bool verbose)
 
   return all_ok;
 }
-
