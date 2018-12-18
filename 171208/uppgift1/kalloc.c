@@ -166,8 +166,7 @@ obj_t **kalloc_inner_find(obj_t **mem, void *p)
 
   do {
     if (kalloc_header(p) == *mem) return mem;
-  }
-  mem = &(*mem)->next;
+    mem = &(*mem)->next;
 } while(*mem);
 
   return NULL; /// Just to make it compile -- you may need to change this
