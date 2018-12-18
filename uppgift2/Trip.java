@@ -92,9 +92,13 @@ public class Trip {
             Node to = tmp.pop();
 
             result += from.name() + "\n";
-            Line line = (Line) from.getEdgeTo(to);
-            result += "Line " + line.getLine() + ", " + line.info() + "\n";
-
+            Node line = from.getEdgeTo(to);
+            if (line instanceof Line) {
+              Line line = (Line) from.getEdgeTo(to);
+              result += "Line " + line.getLine() + ", " + line.info() + "\n";
+            } else {
+              result += "Byte, " + line.info() + "\n";
+            }
             from = to;
         }
         result += from.name() + "\n";
