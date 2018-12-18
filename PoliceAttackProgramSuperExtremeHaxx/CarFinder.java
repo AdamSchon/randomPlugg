@@ -2,7 +2,7 @@ import java.lang.Math;
 
 public class CarFinder {
 
-  private Car<list> Cars;
+  private Car<List> Cars;
 
   public CarFinder(){
 
