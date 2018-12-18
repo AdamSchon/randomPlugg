@@ -13,7 +13,7 @@ public class Trip {
     private List<Node> route;
 
 
-    private class Line extends Edge {
+    static class Line extends Edge {
       private int line;
 
       public Line(final Node n1, final Node n2, final int weight, int newLine) {
@@ -26,7 +26,7 @@ public class Trip {
       }
     }
 
-    private class StopOver extends Edge {
+    static class StopOver extends Edge {
       public StopOver(final Node n1, final Node n2) {
         super(n1, n2, 8);
       }
