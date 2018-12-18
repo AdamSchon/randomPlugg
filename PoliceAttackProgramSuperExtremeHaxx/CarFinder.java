@@ -22,7 +22,7 @@ public class CarFinder {
         closestCar = c;
       }
     }
-    return closestCar;
+    return(closestCar);
   }
 
   public static void main(String [] args) {
