@@ -13,7 +13,7 @@ typedef struct shelf shelf_t;
 struct shelf
 {
   char *name;
-  int amount; 
+  int amount;
 };
 
 shelf_t *shelf_new(char *name, int amount)
@@ -34,7 +34,7 @@ char *ask_question_string(char *question)
   printf("%s\n", question);
   char *answer = NULL;
   size_t length = 0;
-  getline(&answer, &length, stdin);
+  //getline(&answer, &length, stdin);
   *strrchr(answer, '\n') = '\0';
   return answer;
 }
@@ -72,10 +72,10 @@ void print_shelf(void *s, void *p)
 void print_goods(char *name, void *shelf_list, void *p)
 {
   int total = 0;
-  
+
   printf("%s\n\t", name);
   list_apply(shelf_list, print_shelf, &total);
-  printf("Total: %d\n", total); 
+  printf("Total: %d\n", total);
 }
 
 void delete_shelf(void *shelf, void *p)
@@ -94,13 +94,13 @@ int main(void)
 {
   tree_t *db = tree_new();
   tree_t *shelves = tree_new();
-  
+
   char *answer = NULL;
 
   do
     {
       if (answer) free(answer);
-      
+
       char *goods_name = ask_question_string("Mata in namnet på en vara:");
       char *shelf_name = ask_question_string("Mata in namnet på en hylla:");
       int amount = ask_question_int("Mata in ett antal:");
@@ -119,7 +119,7 @@ int main(void)
         {
           free(goods_name);
         }
-      
+
       list_append(list, shelf_new(shelf_name, amount));
 
       answer = ask_question_string("Fler? (ja/nej)");
@@ -127,13 +127,13 @@ int main(void)
   while (starts_with(answer, "#-----") == 0 || strcmp(uppercase(answer), "JA") == 0);
 
   if (answer) free(answer);
-  
+
   tree_apply(db, print_goods, NULL);
 
   /// Tear down
   tree_apply(db, delete_lists, NULL);
   tree_delete(db);
   tree_delete(shelves);
-  
+
   return 0;
 }
