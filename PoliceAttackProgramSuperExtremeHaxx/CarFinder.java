@@ -1,5 +1,6 @@
 import java.lang.Math;
 import java.util.List;
+import java.util.LinkedList;
 
 public class CarFinder {
 
@@ -27,12 +28,12 @@ public class CarFinder {
   public static void main(String [] args) {
     CarFinder CF = new CarFinder();
     for (int i = 0; i < 10; i++) {
-      Car newCar = new Car(i.toString(), Math.random()*10, Math.random()*10);
+      Car newCar = new Car((String) i, Math.random()*10, Math.random()*10);
     }
 
     Car closest = CF.findClosestCar(1,1);
     System.out.println("Closest car to 1,1 is " + closest.getPos());
-    Car closest = CF.findClosestCar(7,7);
+    closest = CF.findClosestCar(7,7);
     System.out.println("Closest car to 7,7 is " + closest.getPos());
   }
 }
