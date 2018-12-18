@@ -34,7 +34,7 @@ char *ask_question_string(char *question)
   printf("%s\n", question);
   char *answer = NULL;
   size_t length = 0;
-  //getline(&answer, &length, stdin);
+  getline(&answer, &length, stdin);
   *strrchr(answer, '\n') = '\0';
   return answer;
 }
