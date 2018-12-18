@@ -8,11 +8,11 @@ public class CarFinder {
 
   }
 
-  public addCar(Car c) {
+  public void addCar(Car c) {
     Cars.add(c);
   }
 
-  public findClosestCar(int x, int y) {
+  public Car findClosestCar(int x, int y) {
     Car closestCar;
     int closest = 99999;
     for (Car c : Cars) {
