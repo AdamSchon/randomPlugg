@@ -1,0 +1,12 @@
+Quote(var("x"))::toString(): x
+Unquote(var("x"))::toString(): Unquote@4aa298b7
+test1: 3 = <bottom>
+test2: 3 + x = <bottom>
+test3: 'Hej' - 4 = <bottom>
+test4: x = <bottom>
+test5: Unquote@7d4991ad = <bottom>
+test6: 3 + Unquote@28d93b30 = <bottom>
+test7: Unquote@1b6d3586 = <bottom>
+test8: Unquote@4554617c = <bottom>
+test9: Unquote@74a14482 = <bottom>
+test10: Unquote@1540e19d = <bottom>
