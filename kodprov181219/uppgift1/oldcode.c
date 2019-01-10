@@ -21,19 +21,19 @@ int ioopm_undo_strtok(char *original, int *replacements)
     }
     original[replacements[i+1]] = replacements[i];
   }
-  return i/2;
+  return i/2; 
 }
 
-/// TODO: Implement in accordance with the specification
+/// TODO: Implement in accordance with the specification 
 /// \param src a null-terminated string or NULL if we want to continue tokenisation of the current string
 /// \param delimiters the delimiters used to tokenise src
 /// \param a pointer to replacements (see documentation in ioopm_undo_strtok) -- you can assume it has enough space
-/// \returns the next token in the string
+/// \returns the next token in the string 
 char *ioopm_strtok(char *src, char *delimiters, int *replacements)
 {
 
 
-
+  
   /// Du får ändra på och kasta bort all nedanstående kod om du vill.
   /// OBS! Dessa variabler behåller sitt värde mellan funktionsanrop!
   static char *stored_src;       /// Används när src == NULL
@@ -48,7 +48,7 @@ char *ioopm_strtok(char *src, char *delimiters, int *replacements)
     }
   else
     {
-      /// Om src == NULL, använd den sparade strängen
+      /// Om src == NULL, använd den sparade strängen 
       src = stored_src;
     }
   int i = 0;
@@ -61,8 +61,6 @@ char *ioopm_strtok(char *src, char *delimiters, int *replacements)
       return(src);
     }
     if (!is_delimiter(src[i], delimiters)){
-      puts("IS DELIMITER");
-      printf("%s", src[i]);
       i++;
     } else {
       replacements[replacement_index*2] = src[i];
@@ -86,10 +84,10 @@ char *ioopm_strtok(char *src, char *delimiters, int *replacements)
       return(src);
     }
   }
-
-  /// Write your code here!
-
-  /// Tips: du kan använda två loopar -- en för att skippa onödiga tecken i starten och en för att hitta slutet på tokenen
-
+  
+  /// Write your code here! 
+  
+  /// Tips: du kan använda två loopar -- en för att skippa onödiga tecken i starten och en för att hitta slutet på tokenen 
+  
   return NULL;
 }
