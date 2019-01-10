@@ -61,8 +61,6 @@ char *ioopm_strtok(char *src, char *delimiters, int *replacements)
       return(src);
     }
     if (!is_delimiter(src[i], delimiters)){
-      puts("IS DELIMITER");
-      printf("%s", src[i]);
       i++;
     } else {
       replacements[replacement_index*2] = src[i];
