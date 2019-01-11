@@ -53,7 +53,7 @@ char *ioopm_strtok(char *src, char *delimiters, int *replacements)
     }
 
     int i = 0;
-    while(is_delimiter(src[i], delimiters)){
+    while(is_delimiter(src[i], delimiters) && src[i] != '\0'){
       stored_start++;
       src = &src[1];
     }
