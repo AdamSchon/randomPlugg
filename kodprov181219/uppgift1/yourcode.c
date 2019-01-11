@@ -39,7 +39,7 @@ char *ioopm_strtok(char *src, char *delimiters, int *replacements)
     {
       /// Spara strängen
       stored_src = src;
-      stored_start = src;
+      stored_start = 0;
       replacement_index = 0;
     }
   else
