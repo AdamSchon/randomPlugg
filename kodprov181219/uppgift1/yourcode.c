@@ -48,34 +48,41 @@ char *ioopm_strtok(char *src, char *delimiters, int *replacements)
       src = stored_src;
     }
 
+    //Om den sparade strängen var NULL, return NULL (Sträng slut)
     if (!src) {
       return(NULL);
     }
 
+    //Hoppa över första tecken som är delimiters, spara stored_start samt flytta fram src
     int i = 0;
     while(is_delimiter(src[i], delimiters) && src[i] != '\0'){
       stored_start++;
       src = &src[1];
     }
 
+    //Kolla om det endast var delimiters i ströngen.
     if (src[i] == '\0') {
       return(NULL);
     }
 
+    //Gå igenom alla tecken fram till nästa delimiter.
     while(!is_delimiter(src[i], delimiters) && src[i] != '\0'){
       i++;
     }
 
+    //Titta om det är sista substringen eller ej.
     if (src[i] == '\0') {
       stored_src = NULL;
       return(src);
     }
 
+    //Spara replacements samt byt ut första delimiter.
     replacements[replacement_index*2] = src[i];
     replacements[replacement_index*2+1] = i+stored_start;
     replacement_index++;
     src[i] = '\0';
 
+    //Spara startaddress samt antalet tecken som funktionen gått igenom.
     stored_src = &src[i+1];
     stored_start += i+1;
     return(src);
