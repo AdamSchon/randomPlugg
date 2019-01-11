@@ -77,7 +77,8 @@ char *ioopm_strtok(char *src, char *delimiters, int *replacements)
       return(NULL);
     }
     if (is_delimiter(src[i], delimiters)){
-      i++;
+      //need to save these!
+      //i++;
     } else {
       stored_start += i;
       stored_src = &src[i];
