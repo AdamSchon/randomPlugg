@@ -58,13 +58,17 @@ char *ioopm_strtok(char *src, char *delimiters, int *replacements)
       src = &src[1];
     }
 
+    if (src[i] == '\0') {
+      return(NULL);
+    }
+
     while(!is_delimiter(src[i], delimiters) && src[i] != '\0'){
       i++;
     }
 
     if (src[i] == '\0') {
-      //stored_src = NULL;
-      return(NULL);
+      stored_src = NULL;
+      return(src);
     }
 
     replacements[replacement_index*2] = src[i];
