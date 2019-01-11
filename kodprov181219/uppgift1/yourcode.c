@@ -73,7 +73,7 @@ char *ioopm_strtok(char *src, char *delimiters, int *replacements)
     src[i] = '\0';
 
     stored_src = &src[i+1];
-    stored_start += i;
+    stored_start += i+1;
     return(src);
   /// Write your code here!
 
