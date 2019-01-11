@@ -1,5 +1,6 @@
 #include <string.h>
 #include <stdbool.h>
+#include <stdio.h>
 
 /// \returns true if c is a character in the string delimiters
 bool is_delimiter(int c, char *delimiters)
@@ -13,8 +14,14 @@ bool is_delimiter(int c, char *delimiters)
 /// \returns number of replacements (same as number of pairs) in replacements
 int ioopm_undo_strtok(char *original, int *replacements)
 {
-  /// Write your code here!
-  return -1;
+  int i = 0;
+  for (; ; i = i+2){
+    if (replacements[i] == '\0') {
+      break;
+    }
+    original[replacements[i+1]] = replacements[i];
+  }
+  return i/2;
 }
 
 /// TODO: Implement in accordance with the specification
@@ -24,16 +31,19 @@ int ioopm_undo_strtok(char *original, int *replacements)
 /// \returns the next token in the string
 char *ioopm_strtok(char *src, char *delimiters, int *replacements)
 {
+
+
+
   /// Du får ändra på och kasta bort all nedanstående kod om du vill.
   /// OBS! Dessa variabler behåller sitt värde mellan funktionsanrop!
   static char *stored_src;       /// Används när src == NULL
-  static char *stored_start;     /// Värdet på src första gånger
+  static int stored_start;     /// Värdet på src första gånger
   static int replacement_index; /// Kan användas för att indexera replacements
   if (src)
     {
       /// Spara strängen
       stored_src = src;
-      stored_start = src;
+      stored_start = 0;
       replacement_index = 0;
     }
   else
@@ -41,29 +51,38 @@ char *ioopm_strtok(char *src, char *delimiters, int *replacements)
       /// Om src == NULL, använd den sparade strängen
       src = stored_src;
     }
-
-    if (!src) {
+  int i = 0;
+  for (; ; i++) {
+    if (stored_src == NULL){
       return(NULL);
     }
-
-    int i = 0;
-    while(is_delimiter(delimiters, src[i])){
-      i++;
-      src = src[1];
-    }
-
-    while(!is_delimiter(delimiters, src[i]) && src[i] != '\0'){
-      i++;
-    }
-    if (src[i] == '\0') {
+    if (src[i] == '\0'){
       stored_src = NULL;
       return(src);
     }
+    if (!is_delimiter(src[i], delimiters)){
+      //i++;
+    } else {
+      replacements[replacement_index*2] = src[i];
+      replacements[replacement_index*2+1] = i+stored_start;
+      replacement_index++;
+      src[i] = '\0';
+      i++;
+      break;
+    }
+  }
 
-    src[i] = '\0';
-    //Spara replacements här
-    stored_src = src[i+1];
-    return(src);
+  for (; ; i++) {
+    if (src[i] == '\0') {
+      return(NULL);
+    }
+    if (!is_delimiter(src[i], delimiters)){
+      stored_start += i;
+      stored_src = &src[i];
+      return(src);
+    }
+  }
+
   /// Write your code here!
 
   /// Tips: du kan använda två loopar -- en för att skippa onödiga tecken i starten och en för att hitta slutet på tokenen
