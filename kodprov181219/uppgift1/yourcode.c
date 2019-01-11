@@ -49,7 +49,7 @@ char *ioopm_strtok(char *src, char *delimiters, int *replacements)
     int i = 0;
     while(is_delimiter(src[i], delimiters)){
       i++;
-      src = src[1];
+      src = *src[1];
     }
 
     while(!is_delimiter(src[i], delimiters) && src[i] != '\0'){
@@ -62,7 +62,7 @@ char *ioopm_strtok(char *src, char *delimiters, int *replacements)
 
     src[i] = '\0';
     //Spara replacements här
-    stored_src = src[i+1];
+    stored_src = *src[i+1];
     return(src);
   /// Write your code here!
 
