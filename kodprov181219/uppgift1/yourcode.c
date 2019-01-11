@@ -56,10 +56,11 @@ char *ioopm_strtok(char *src, char *delimiters, int *replacements)
     if (stored_src == NULL){
       return(NULL);
     }
-    if (src[i] == '\0'){
-      stored_src = NULL;
-      return(src);
-    }
+    //Always called when previous thing is set to '\0'
+    //if (src[i] == '\0'){
+    //  stored_src = NULL;
+    //  return(src);
+    //}
     if (!is_delimiter(src[i], delimiters)){
       //i++;
     } else {
