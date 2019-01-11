@@ -13,8 +13,14 @@ bool is_delimiter(int c, char *delimiters)
 /// \returns number of replacements (same as number of pairs) in replacements
 int ioopm_undo_strtok(char *original, int *replacements)
 {
-  /// Write your code here!
-  return -1;
+  int i = 0;
+  for (; ; i = i+2){
+    if (replacements[i] == '\0') {
+      break;
+    }
+    original[replacements[i+1]] = replacements[i];
+  }
+  return i/2;
 }
 
 /// TODO: Implement in accordance with the specification
@@ -27,7 +33,7 @@ char *ioopm_strtok(char *src, char *delimiters, int *replacements)
   /// Du får ändra på och kasta bort all nedanstående kod om du vill.
   /// OBS! Dessa variabler behåller sitt värde mellan funktionsanrop!
   static char *stored_src;       /// Används när src == NULL
-  static char *stored_start;     /// Värdet på src första gånger
+  static int stored_start;     /// Värdet på src första gånger
   static int replacement_index; /// Kan användas för att indexera replacements
   if (src)
     {
@@ -48,21 +54,26 @@ char *ioopm_strtok(char *src, char *delimiters, int *replacements)
 
     int i = 0;
     while(is_delimiter(src[i], delimiters)){
-      i++;
+      stored_start++;
       src = &src[1];
     }
 
     while(!is_delimiter(src[i], delimiters) && src[i] != '\0'){
       i++;
     }
+
     if (src[i] == '\0') {
       stored_src = NULL;
       return(src);
     }
 
+    replacements[replacement_index*2] = src[i];
+    replacements[replacement_index*2+1] = i+stored_start;
+    replacement_index++;
     src[i] = '\0';
-    //Spara replacements här
+
     stored_src = &src[i+1];
+    stored_start += i;
     return(src);
   /// Write your code here!
 
