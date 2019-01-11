@@ -47,7 +47,7 @@ void test1()
       ++failures;
       puts("FAILED .. Wrong number of replacements");
     }
-    
+
   free(str);
   free(replacements);
 }
@@ -92,7 +92,7 @@ void test2()
       ++failures;
       puts("FAILED .. Wrong number of replacements");
     }
-    
+
   free(str);
   free(replacements);
 }
@@ -140,6 +140,7 @@ void test4()
       ++failures;
       puts("FAILED .. check test4 for more information");
     }
+  free(replacements);
 }
 
 void test5()
@@ -157,6 +158,7 @@ void test5()
       ++failures;
       puts("FAILED .. check test5 for more information");
     }
+  free(replacements);
 }
 
 void test6()
@@ -174,6 +176,7 @@ void test6()
       ++failures;
       puts("FAILED .. check test5 for more information");
     }
+  free(replacements);
 }
 
 int main(void)
@@ -199,6 +202,6 @@ int main(void)
     {
       printf("\n\tThere are %d FAILING tests -- check the output above!\n", failures);
     }
-  
+
   return 0;
 }
