@@ -1,7 +1,7 @@
   -- stringOfInteger :: Integer -> String
 
   stringOfInteger x =
-  if (abs x) > 9
+  if ((abs x) > 9)
     Then (stringOfInteger (div x 10)) ++ show(mod x 10)
     else
       if (x > 0)
