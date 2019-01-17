@@ -5,6 +5,6 @@
       then (stringOfInteger (div x 10)) ++ show(mod x 10)
       else if (x > 0)
             then show(x)
-            else if (x != 0)
+            else if (not (x == 0))
                   then "-" ++ show(x)
                   else ""
