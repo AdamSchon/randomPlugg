@@ -9,7 +9,7 @@ takeLast word = drop (length word - 3)
 rhymes first second =
   if (((length first) > 3) && ((length second) > 3))
   then
-    if ((drop ((length first) - 3)) == (drop ((length second) - 3)))
+    if ((drop ((length first) - 3) first) == (drop ((length second) - 3) second))
       then True
       else False
   else
