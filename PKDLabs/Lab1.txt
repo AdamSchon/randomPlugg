@@ -1,0 +1,53 @@
+Problem 1:
+
+1: 1477 :t Num
+2: 5 :t Num
+3: 7.5 :t Fractional
+4: 7 :t Integral
+5: 15 'div' 2 : Syntax error
+6: 15 div 2 : Syntax error
+7: 7.5 :t Fractional
+8: 15.0 'div' 2.0 : Syntax error
+9: 7.4444445~ :t Fractional
+10: False :t Bool
+11: "xyz" :t [char]
+12: x ++ "yz" : Syntax error, x has no value
+13: "7" :t string
+14: 7 :t Integer
+15: truncate 23.6 :t Integral
+16: "Comp" :t [char]
+17: "uter Science!" :t [char]
+18: Syntax error
+19: "Science" : [char]
+20: True :t bool
+21: True :t bool
+22: 8 :t int
+23: False :t bool
+24: True :t bool
+26: 65 < 150 || 19 : Syntax error
+26: Syntax error
+27: Syntax error
+28: True :t bool
+
+
+Problem 2:
+
+/ -> division
+div -> "how many time the first element can be divided by the second"
+> ->"left bigger than right" - boolean
+>= ->"left bigger than or equal to right" - boolean
+|| -> or
+not -> !
+++ -> append stings
+take -> takes first X letters from string
+drop -> remove first X letters from string
+truncate -> flatten
+length -> number of chars in string
+
+Problem 3:
+expression after the function or by ( ).
+Shows which expression should be performed
+Not at all.
+
+Problem 4:
+78.5309175
