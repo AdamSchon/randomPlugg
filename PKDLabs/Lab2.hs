@@ -6,12 +6,11 @@ circleSquareArea x = circleArea x - squareArea(cathetus (2*x))
 
 
 rhymes first second =
-if length first > 2 && length second > 2
-then
+if ((length first) > 2 && (length second) > 2) then
   if drop (length first - 3) == drop (length second -3)
     then True
     else False
-  else
-    if first == second
-      then True
-      else False
+else
+  if first == second
+    then True
+    else False
