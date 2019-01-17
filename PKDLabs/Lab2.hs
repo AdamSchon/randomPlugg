@@ -16,3 +16,6 @@ rhymes first second =
     if first == second
       then True
       else False
+
+-- Problem 3: drJeep checks if length x > length y and then makes x and y the same length.
+-- Then the function returns x == y (true if the ending of x == y).
