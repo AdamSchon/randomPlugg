@@ -3,6 +3,6 @@
 -- A better name of the function is "endsWith"(?)
 -- The arguments could be: Word and Ending
 
-updatePersonName (FamName, GivName, Street, PostNr, PostAddr) 1 new = (new, GivName, Street, PostNr, PostAddr)
-updatePersonName (FamName, GivName, Street, PostNr, PostAddr) 2 new = (FamName, new, Street, PostNr, PostAddr)
-updatePersonName (FamName, GivName, Street, PostNr, PostAddr) n new = (FamName, GivName, Street, PostNr, PostAddr)
+updatePersonName (a, b, c, d, e) 1 new = (new,b,c,d,e)
+updatePersonName (a, b, c, d, e) 2 new = (a,new,c,d,e)
+updatePersonName (a, b, c, d, e) _ _ = (a,b,c,d,e)
