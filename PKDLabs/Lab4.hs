@@ -30,3 +30,8 @@
     if (n == 0)
       then []
       else x:(myReplicate (n-1) x)
+
+  fromTo low high =
+    if (low == high)
+      then [high]
+      else low:(fromTo (low+1) high)
