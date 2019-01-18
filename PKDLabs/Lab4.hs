@@ -11,11 +11,11 @@
                   then "-" ++ show(x)
                   else ""
 
-recursiveSearch mainstring substring num =
-if ((length substring) > (length (drop num mainstring)))
-  then (-1)
-  else if (substring == (drop num mainstring))
-        then return num
-        else recursiveSearch(mainstring substring num+1)
+  recursiveSearch mainstring substring n =
+  if ((length substring) > (length (drop n mainstring)))
+    then (-1)
+    else if (substring == (drop n mainstring))
+        then return n
+        else recursiveSearch(mainstring substring n+1)
 
 searchString mainstring substring = recursiveSearch mainstring substring 0
