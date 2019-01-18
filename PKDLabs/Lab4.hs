@@ -14,7 +14,7 @@
   recursiveSearch m s n =
     if ((length s) > (length (drop n m)))
       then (-1)
-      else if (s == (drop n m))
+      else if (s == (take (length s) (drop n m)))
           then n
           else recursiveSearch m s (n+1)
 
