@@ -29,4 +29,4 @@
   myReplicate n x =
     if (n == 0)
       then []
-      else x:(myRepliace (n-1) x)
+      else x:(myReplicate (n-1) x)
