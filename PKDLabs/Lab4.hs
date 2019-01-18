@@ -28,5 +28,5 @@
 
   myReplicate n x =
     if (n == 0)
-      then xs
-      else x:myRepliace (n-1) x
+      then []
+      else x:(myRepliace (n-1) x)
