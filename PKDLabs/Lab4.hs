@@ -12,10 +12,10 @@
                   else ""
 
   recursiveSearch m s n =
-  if ((length s) > (length (drop n m)))
-    then (-1)
-    else if (s == (drop n m))
-        then return n
-        else recursiveSearch(m s n+1)
+    if ((length s) > (length (drop n m)))
+      then (-1)
+      else if (s == (drop n m))
+          then return n
+          else recursiveSearch(m s n+1)
 
-searchString mainstring substring = recursiveSearch mainstring substring 0
+  searchString mainstring substring = recursiveSearch mainstring substring 0
