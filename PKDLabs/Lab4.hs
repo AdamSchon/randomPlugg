@@ -10,3 +10,12 @@
             else if (not (x == 0))
                   then "-" ++ show(x)
                   else ""
+
+recursiveSearch mainstring substring num =
+if ((length substring) > (length (drop num mainstring)))
+  then (-1)
+  else if (substring == (drop num mainstring))
+        then return num
+        else recursiveSearch(mainstring substring num+1)
+
+searchString mainstring substring = recursiveSearch mainstring substring 0
