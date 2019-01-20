@@ -14,7 +14,6 @@ fromDecimals list =
 squareOfEven list =
   if list == []
     then []
-    else
-      if ((head list) % 2 == 0)
-        then ((head list) ^ 2):squareOfEven (drop 1 list)
-        else squareOfEven (drop 1 list)
+    else if ((head list) % 2 == 0)
+          then ((head list) ^ 2):squareOfEven (drop 1 list)
+          else squareOfEven (drop 1 list)
