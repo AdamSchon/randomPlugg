@@ -6,4 +6,4 @@ myInit list =
 fromDecimals list =
   if list == []
     then 0
-    else (head list) * (length list) + (fromDecimals (drop 1 list))
+    else (head list) * (length list) * 10 + (fromDecimals (drop 1 list))
