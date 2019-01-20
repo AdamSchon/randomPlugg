@@ -6,3 +6,8 @@
 updatePersonName (a, b, c, d, e) 2 new = (new,b,c,d,e)
 updatePersonName (a, b, c, d, e) 1 new = (a,new,c,d,e)
 updatePersonName (a, b, c, d, e) _ _ = (a,b,c,d,e)
+
+
+-- Algorithm
+-- if input == 0 return nothing
+-- return recursive(input/10) ++ "input % 10"

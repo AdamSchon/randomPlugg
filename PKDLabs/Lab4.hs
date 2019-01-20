@@ -35,3 +35,6 @@
     if (low == high)
       then [high]
       else low:(fromTo (low+1) high)
+
+
+-- Problem 6, not sure what declared locally means. Ask about it?
