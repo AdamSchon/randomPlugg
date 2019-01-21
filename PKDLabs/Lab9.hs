@@ -6,7 +6,7 @@ myConcat = foldr (++) ""
 
 -- The function multiplies all the numbers in the list and returns the result.
 
-data Suite = Suite Hearts | Diamonds | Clubs | Spades deriving(Show)
+data Suite = Hearts | Diamonds | Clubs | Spades deriving(Show)
 
 data Rank = Rank Int
 
