@@ -35,15 +35,3 @@
     if (low == high)
       then [high]
       else low:(fromTo (low+1) high)
-
-  searchString2 mainstring substring =
-    takeWhile (\x -> (length substring) > (length(drop x mainstring))) [1..99999]
-      if (substring == (take (length s) (drop n mainstring)))
-        then return n
-        else
-      if ((length substring) == (length(drop n mainstring)))
-        then return (-1)
-        else
-
-
--- Problem 6, not sure what declared locally means. Ask about it?
