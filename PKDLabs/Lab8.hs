@@ -12,4 +12,4 @@
 flipArguments f a b = f b a
 -- (t2 -> t1 -> t) -> t1 -> t2 -> t
 
-differenceQuotient f x h = ((f x) - (f (x+h))) / h
+differenceQuotient f x h = ((f (x+h)) - (f x)) / h
