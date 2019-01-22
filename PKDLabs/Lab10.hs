@@ -16,3 +16,8 @@ greaterCard (Card s1 r1) (Card s2 r2) =
     else if (r1 > r2)
           then True
           else False
+
+-- A lot of if statements, could have been done much better. Also, making it
+--  Int and String without subtypes is lazy
+
+data Just = Just Int | Nothing deriving(Show)
