@@ -13,6 +13,6 @@ greaterCard (Card s1 r1) (Card s2 r2) =
           else if (s1 == Clubs && s2 == Diamonds)
             then True
             else False
-  if (r1 > r2)
-    then True
-    else False
+    else if (r1 > r2)
+          then True
+          else False
