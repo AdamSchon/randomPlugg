@@ -9,7 +9,7 @@ greaterCard (Card s1 r1) (Card s2 r2) =
       else if (s1 == Spades && not(s2 == Spades))
         then True
         else if (s1 == Hearts && (s2 == Clubs || s2 == Diamonds))
-          then true
+          then True
           else if (s1 == Clubs && s2 == Diamonds)
             then True
             else False
