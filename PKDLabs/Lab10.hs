@@ -1,8 +1,4 @@
-data Suite = Hearts | Diamonds | Clubs | Spades deriving(Show)
-
-data Rank = Rank Int
-
-data Card = Card Suite Rank
+data Card = Hearts Int | Diamonds Int | Clubs Int | Spades Int deriving(Show)
 
 greaterCard (Card s1 r1) (Card s2 r2) =
   if (r1 > r2)
