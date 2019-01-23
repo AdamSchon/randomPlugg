@@ -4,20 +4,16 @@
 --
 
 data FamilyTree = Void
-                | Man String Int FamilyTree FamilyTree
-                | Woman String Int FamilyTree FamilyTree deriving(Show)
+  | Man String Int FamilyTree FamilyTree
+  | Woman String Int FamilyTree FamilyTree deriving(Show)
 
 
 findOlder Nothing Nothing = Nothing
 findOlder (String Int) Nothing = (String Int)
 findOlder Nothing (String Int) = (String Int)
 findOlder (String1 Int1) (String2 Int2)
-          | Int1 > Int2 = (String1 Int2)
-          | otherwise = (String2 Int2)
-
-    merge (x:xs) (y:ys)
-      | y < x = y : merge (x:xs) ys
-      | otherwise = x : merge xs (y:ys)
+  | Int1 > Int2 = (String1 Int2)
+  | otherwise = (String2 Int2)
 
 oldestWoman Void = Nothing
 oldestWoman (Man name age left right) =
