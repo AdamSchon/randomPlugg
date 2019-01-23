@@ -7,7 +7,7 @@ data FamilyTree = Void
   | Man String Int FamilyTree FamilyTree
   | Woman String Int FamilyTree FamilyTree deriving(Show)
 
-
+findOlder :: (String Int) -> (String Int) -> (String Int)
 findOlder Nothing Nothing = Nothing
 findOlder (s i) Nothing = (s i)
 findOlder Nothing (s i) = (s i)
