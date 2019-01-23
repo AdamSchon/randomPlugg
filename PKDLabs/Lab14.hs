@@ -8,7 +8,7 @@ isBalanced = bal (-1) 0
   --where bal :: Int -> In t -> String -> Maybe Int
 bal _ 0 [] = Nothing
 bal i _ [] = Just i
-bal i (-1) _ = Noth ing
+bal i (-1) _ = Nothing
 bal i n ('[':bs) = bal (i+1) (n+1) bs
 bal i n (']':bs) = bal (i+1) (n+1) bs
 
