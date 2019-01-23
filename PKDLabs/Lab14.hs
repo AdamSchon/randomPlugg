@@ -1,5 +1,6 @@
 import Text.Printf -- for printing stuff out
 import Test.HUnit
+import Debug.Trace
 
 -- Return whether a string contains balanced brackets. Nothing indicates a
 -- balanced string, while (Just i) means an imbalance was found at, or just
@@ -10,7 +11,7 @@ isBalanced = bal (-1) 0
 bal _ 0 [] = Nothing
 bal i _ [] = Just i
 bal i (-1) _ = Nothing
-bal i n ('[':bs) = bal (i+1) (n+1) bs
+bal i n ('[':bs) = trace ("n: " ++ show n) $ bal (i+1) (n+1) bs
 bal i n (']':bs) = bal (i+1) (n+1) bs
 
 -- Print a string, indicating whether it contains balanced brackets. If not,
