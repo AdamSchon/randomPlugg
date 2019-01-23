@@ -12,7 +12,7 @@ bal i (-1) _ = Noth ing
 bal i n ('[':bs) = bal (i+1) (n+1) bs
 bal i n (']':bs) = bal (i+1) (n+1) bs
 
-- - Print a string, indicating whether it contains balanced brackets. If not,
+-- Print a string, indicating whether it contains balanced brackets. If not,
 -- indicate the bracket at which the imbalance was found.
 check :: String -> IO ()
 check s = maybe (good s) (bad s) (isBalanced s)
