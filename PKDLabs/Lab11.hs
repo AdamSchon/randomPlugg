@@ -3,6 +3,6 @@
 --subtree r is assigned through: a b c l r
 --
 
-data FamilyTree = Void deriving(Show)
-                | Man String Int FamilyTree FamilyTree deriving(Show)
+data FamilyTree = Void
+                | Man String Int FamilyTree FamilyTree 
                 | Woman String Int FamilyTree FamilyTree deriving(Show)
