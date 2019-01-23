@@ -16,4 +16,6 @@ findOlder (s1 i1) (s2 i2)
   | otherwise = (s2 i2)
 
 oldestWoman Void = Nothing
--- oldestWoman (Man name age left right) =
+oldestWoman (Woman name age left right) =
+  maybe Nothing findOlder (name age) (maybe Nothing findOlder ((oldestWoman left) (oldestWoman right)))
+oldestWoman (Man name age left right) = maybe Nothing findOlder ((oldestWoman left) (oldestWoman right))
