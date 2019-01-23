@@ -15,7 +15,7 @@ bal i (-1) _ = Just i
 bal i n ('[':bs) = bal (i+1) (n+1) bs
 --bal i n ('[':bs) = trace ("n: " ++ show n) $ bal (i+1) (n+1) bs
 -- Changed this from = bal (i+1) (n+1) bs
-bal i n (']':bs) = bal (i-1) (n+1) bs
+bal i n (']':bs) = bal (i+1) (n-1) bs
 
 -- Print a string, indicating whether it contains balanced brackets. If not,
 -- indicate the bracket at which the imbalance was found.
