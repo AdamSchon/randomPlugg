@@ -21,8 +21,15 @@ oldestWoman Void = Nothing
 oldestWoman (Woman name age left right) = findOlder (Just (name,age)) (findOlder (oldestWoman (left)) (oldestWoman (right)))
 oldestWoman (Man _ _ left right) = (findOlder (oldestWoman (left)) (oldestWoman (right)))
 
+-- Question 1 c)
+-- Better to have it as an argument to ensure people who don't have a gender can be part of the database!
+-- On a more serious I think it's faster to have seperate constructors for the two types.
+-- As the check will take time to perform.
 
---oldestWoman Void = Nothing
---oldestWoman (Woman name age left right) =
---  (findOlder (Just (name, age)) (findOlder ((oldestWoman left) (oldestWoman right))))
---oldestWoman (Man name age left right) = findOlder ((oldestWoman left) (oldestWoman right))
+
+-- Question 2
+-- Possibly the connection of rooms in a 2-D video game. One node containing the name of the
+-- current room and up to four other possible rooms.
+
+data roomConnection = Void 
+  | String roomConnection roomConnection roomConnection roomConnection
