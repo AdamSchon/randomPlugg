@@ -14,7 +14,7 @@ findOlder :: Person -> Person -> Person
 findOlder Nothing Nothing = Nothing
 findOlder Person Nothing = Person
 findOlder Nothing Person = Person
-findOlder (s1 i1) (s2 i2)
+findOlder s1 i1 s2 i2
   | i1 > i2 = (s1 i1)
   | otherwise = (s2 i2)
 
