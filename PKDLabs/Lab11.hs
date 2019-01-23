@@ -9,8 +9,8 @@ data FamilyTree = Void
 
 -- findOlder :: String -> Int -> String -> Int -> String -> Int
 findOlder s1 i1 s2 i2
-  | i1 > i2 = s1 i1
-  | otherwise = s2 i2
+  | i1 > i2 = (s1 i1)
+  | otherwise = (s2 i2)
 
 
 --data Person = Nobody
