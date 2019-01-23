@@ -18,16 +18,7 @@ findOlder (Just (s1, i1)) (Just(s2, i2)) =
     else Just (s2,i2)
 
 
-
---findOlder :: Person -> Person -> maybe Person
---findOlder Nobody Nobody = Nothing
---findOlder Person Nobody = Person
---findOlder Nobody Person = Person
---findOlder s1 i1 s2 i2
---  | i1 > i2 = (s1 i1)
---  | otherwise = (s2 i2)
-
 oldestWoman Void = Nothing
---oldestWoman (Woman name age left right) =
---  maybe Nothing findOlder (name age) (maybe Nothing findOlder ((oldestWoman left) (oldestWoman right)))
---oldestWoman (Man name age left right) = maybe Nothing findOlder ((oldestWoman left) (oldestWoman right))
+oldestWoman (Woman name age left right) =
+  maybe Nothing findOlder (name age) (maybe Nothing findOlder ((oldestWoman left) (oldestWoman right)))
+oldestWoman (Man name age left right) = maybe Nothing findOlder ((oldestWoman left) (oldestWoman right))
