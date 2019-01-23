@@ -10,8 +10,8 @@ data FamilyTree = Void
 data Maybe a = Just (String,Int) | Nothing
 
 
-findOlder :: Person -> Person -> Person
-findOlder (s1, i1) (s2, i2)
+--findOlder :: Person -> Person -> Person
+findOlder Just (s1, i1) Just (s2, i2)
   | i1 > i2 = (s1 i1)
   | otherwise = (s2 i2)
 
