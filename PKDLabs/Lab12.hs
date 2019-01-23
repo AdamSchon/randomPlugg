@@ -5,7 +5,8 @@ data BSTree = Void | Node BSTree Int BSTree deriving (Show)
 
 delete (Node left i right) val =
   if (i == val)
-    then (i,left) = deleteMax left
+    then delete (Node left o right) val = Node tz z right
+          where (z,tz) = deletemax left
     else if (i > val)
           then (Node (delete left) i right)
           else (Node left i (delete right))
