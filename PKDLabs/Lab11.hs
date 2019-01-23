@@ -11,7 +11,7 @@ data Maybe a = Just a | Nothing deriving(Eq, Ord, Show)
 
 
 --findOlder :: Person -> Person -> Person
-findOlder Maybe (s1, i1) Maybe (s2, i2)
+findOlder (s1, i1) (s2, i2)
   | i1 > i2 = (s1 i1)
   | otherwise = (s2 i2)
 
