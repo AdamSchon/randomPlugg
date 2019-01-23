@@ -15,7 +15,7 @@ data BSTree = Void | Node BSTree Int BSTree deriving (Show)
 --      where (z,tz) = deleteMax left
 
 deletemax :: (BSTree a) -> (a,BSTree a)
-deletemax (Node t1 y Nil) = (y,t1)
+deletemax (Node t1 y Void) = (y,t1)
 deletemax (Node t1 y t2) = (z, Node t1 y tz)
   where (z,tz) = deletemax t2
 
