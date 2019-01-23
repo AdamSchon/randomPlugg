@@ -10,12 +10,12 @@ data FamilyTree = Void
 
 --findOlder :: Person -> Person -> Person
 findOlder Nothing Nothing = Nothing
-findOlder Nothing (Just (s,i)) = (s,i)
-findOlder (Just (s,i)) Nothing = (s,i)
+findOlder Nothing (Just (s,i)) = Just (s,i)
+findOlder (Just (s,i)) Nothing = Just (s,i)
 findOlder (Just (s1, i1)) (Just(s2, i2)) =
   if (i1 > i2)
-    then (s1,i1)
-    else (s2,i2)
+    then Just (s1,i1)
+    else Just (s2,i2)
 
 
 
