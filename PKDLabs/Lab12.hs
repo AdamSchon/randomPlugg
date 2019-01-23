@@ -7,6 +7,6 @@ data BSTree = Void | Node BSTree Int BSTree deriving (Show)
 --  if (i == val)
 --  then i = findLargest(left)
 
-deletemax (Node left i Void) = (i,left)
-deletemax (Node left i right) = (z, Node left i tz)
-  where (z,tz) = deletemax right
+delete (Node left i Void) = (i,left)
+delete (Node left i right) = (z, Node left i tz)
+  where (z,tz) = delete right
