@@ -11,9 +11,10 @@ data Maybe a = Just a | Nothing deriving(Eq, Ord, Show)
 
 
 --findOlder :: Person -> Person -> Person
-findOlder (s1, i1) (s2, i2)
-  | i1 > i2 = (s1 i1)
-  | otherwise = (s2 i2)
+findOlder (s1, i1) (s2, i2) =
+  if (i1 > i2)
+    then (s1,i1)
+    else (s2,i2)
 
 
 
