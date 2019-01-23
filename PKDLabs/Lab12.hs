@@ -14,12 +14,12 @@ data BSTree = Void | Node BSTree Int BSTree deriving (Show)
 --delete (Node left o right) val = (Node tz z right)
 --      where (z,tz) = deleteMax left
 
-deletemax :: (BSTree a) -> (a,BSTree a)
+--deletemax :: (BSTree a) -> (a,BSTree a)
 deletemax (Node t1 y Void) = (y,t1)
 deletemax (Node t1 y t2) = (z, Node t1 y tz)
   where (z,tz) = deletemax t2
 
-deletetree :: (BSTree a) -> a -> (BSTree a)
+--deletetree :: (BSTree a) -> a -> (BSTree a)
 deletetree Void x = Void
 deletetree (Node tleft y tright) x
   | x < y   = Node (deletetree tleft x) y tright
