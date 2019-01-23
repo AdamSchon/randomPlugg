@@ -10,7 +10,7 @@ data FamilyTree = Void
 
 findOlder Nothing Nothing = Nothing
 findOlder (String Int) Nothing = (String Int)
-findOlder Nothing (s i) = (s i)
+findOlder Nothing (String Int) = (String Int)
 findOlder (s1 i1) (s2 i2)
           | i1 > i2 = (s1 i1)
           | otherwise = (s2 i2)
