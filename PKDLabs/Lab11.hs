@@ -7,7 +7,7 @@ data FamilyTree = Void
   | Man String Int FamilyTree FamilyTree
   | Woman String Int FamilyTree FamilyTree deriving(Show)
 
-data Maybe Person = Just (String,Int) | Nothing
+data Maybe a = Just (String,Int) | Nothing
 
 
 findOlder :: Person -> Person -> Person
