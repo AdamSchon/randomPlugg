@@ -1,7 +1,6 @@
-myInit list =
-  if length list == 1
-    then []
-    else (head list):myInit(drop 1 list)
+myInit [] = []
+myInit [x] = []
+myInit (x:xs) = x:myInit xs
 
 fromDecimals list =
   if list == []
@@ -17,6 +16,9 @@ squareOfEven list =
     else if (mod (head list) 2 == 0)
           then ((head list) ^ 2):squareOfEven (drop 1 list)
           else squareOfEven (drop 1 list)
+
+squareOfEven2 list =
+  [ x ^ 2 | x <- list, mod (x) 2 == 0]
 
 -- 1000 - 0.32 seconds
 -- 2000 - 1.27 seconds
