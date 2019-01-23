@@ -1,4 +1,5 @@
 import Text.Printf -- for printing stuff out
+import Test.HUnit
 
 -- Return whether a string contains balanced brackets. Nothing indicates a
 -- balanced string, while (Just i) means an imbalance was found at, or just
@@ -18,3 +19,5 @@ bal i n (']':bs) = bal (i+1) (n+1) bs
 check s = maybe (good s) (bad s) (isBalanced s)
   where good s = printf "Good \"%s\"\n" s
 bad s n = printf "Bad \"%s\"\n%*s^\n " s (n+6) " "
+
+test1 = TestCase(assertEqual "[]", Nothing isBalanced)
