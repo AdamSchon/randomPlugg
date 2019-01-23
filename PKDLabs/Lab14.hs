@@ -21,3 +21,9 @@ check s = maybe (good s) (bad s) (isBalanced s)
 bad s n = printf "Bad \"%s\"\n%*s^\n " s (n+6) " "
 
 test1 = TestCase(assertEqual "[]" Nothing (isBalanced []))
+test2 = TestCase(assertEqual "[[[]]]" Nothing (isBalanced [[[]]]))
+test3 = TestCase(assertEqual "[]]" Just 3 (isBalanced []]))
+test4 = TestCase(assertEqual "EmptyTest" Nothing (isBalanced ""))
+test5 = TestCase(assertEqual "[[[]]" Nothing (isBalanced [[[]]))
+
+tests = TestList [TestLabel "test1" test1, TestLabel "test2" test2, TestLabel "test3" test3, TestLabel "test4" test4, TestLabel "test5" test5]
