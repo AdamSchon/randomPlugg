@@ -12,8 +12,8 @@ data Person = Nobody
 
 findOlder :: Person -> Person -> Person
 findOlder Nobody Nobody = Nothing
-findOlder s i Nobody = s i
-findOlder Nobody s i = s i
+findOlder Person Nobody = Person
+findOlder Nobody Person = Person
 findOlder s1 i1 s2 i2
   | i1 > i2 = (s1 i1)
   | otherwise = (s2 i2)
