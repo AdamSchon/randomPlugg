@@ -31,5 +31,5 @@ oldestWoman (Man _ _ left right) = (findOlder (oldestWoman (left)) (oldestWoman 
 -- Possibly the connection of rooms in a 2-D video game. One node containing the name of the
 -- current room and up to four other possible rooms.
 
-data roomConnection = Void 
-  | String roomConnection roomConnection roomConnection roomConnection
+data RoomConnection = Void
+  | String RoomConnection RoomConnection RoomConnection RoomConnection
