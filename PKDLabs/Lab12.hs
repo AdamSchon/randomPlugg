@@ -3,11 +3,13 @@ data BSTree = Void | Node BSTree Int BSTree deriving (Show)
 --findLargest (Node _ i Void) = i
 --findLargest (Node _ _ right) = findLargest right
 
-delete (Node left i right) val 
+delete (Node left i right) val
   | i > val = (Node (delete left) i right)
   | i < val = (Node left i (delete right))
-  | i == val = delete (Node left o right) val = Node tz z right
-                  where (z,tz) = deletemax left
+
+delete (Node Void i right) val   = right
+delete (Node left o right) val = Node tz z right
+  where (z,tz) = deletemax left
 
 deleteMax (Node left i Void) = (i,left)
 deleteMax (Node left i right) = (z, Node left i tz)
