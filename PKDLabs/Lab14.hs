@@ -20,4 +20,4 @@ check s = maybe (good s) (bad s) (isBalanced s)
   where good s = printf "Good \"%s\"\n" s
 bad s n = printf "Bad \"%s\"\n%*s^\n " s (n+6) " "
 
-test1 = TestCase(assertEqual "[]", Nothing isBalanced)
+test1 = TestCase(assertEqual "[]", Nothing (isBalanced []))
