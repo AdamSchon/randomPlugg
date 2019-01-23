@@ -10,10 +10,9 @@ deleteMax (Node left i right) = (z, Node left i tz)
 delete (Node left i right) val
   | i > val = (Node (delete left) i right)
   | i < val = (Node left i (delete right))
-
-delete (Node Void i right) val   = right
+delete (Node Void i right) val = right
 delete (Node left o right) val = Node tz z right
-  where (z,tz) = deletemax left
+  where (z,tz) = deleteMax left
 
 
 
