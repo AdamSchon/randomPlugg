@@ -9,7 +9,7 @@ data FamilyTree = Void
 
 
 --findOlder :: Person -> Person -> Person
-findOlder Nothing Nothing = nothing
+findOlder Nothing Nothing = Nothing
 findOlder Nothing (s,i) = (s,i)
 findOlder (s,i) Nothing = (s,i)
 findOlder (s1, i1) (s2, i2) =
@@ -27,7 +27,7 @@ findOlder (s1, i1) (s2, i2) =
 --  | i1 > i2 = (s1 i1)
 --  | otherwise = (s2 i2)
 
-oldestWoman Void = Main.Nothing
+oldestWoman Void = Nothing
 --oldestWoman (Woman name age left right) =
 --  maybe Nothing findOlder (name age) (maybe Nothing findOlder ((oldestWoman left) (oldestWoman right)))
 --oldestWoman (Man name age left right) = maybe Nothing findOlder ((oldestWoman left) (oldestWoman right))
