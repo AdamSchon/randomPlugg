@@ -16,4 +16,4 @@ findOlder (String1 Int1) (String2 Int2)
   | otherwise = (String2 Int2)
 
 oldestWoman Void = Nothing
-oldestWoman (Man name age left right) =
+-- oldestWoman (Man name age left right) =
