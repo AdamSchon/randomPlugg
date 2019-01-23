@@ -7,10 +7,11 @@ data FamilyTree = Void
   | Man String Int FamilyTree FamilyTree
   | Woman String Int FamilyTree FamilyTree deriving(Show)
 
-data Maybe a = Just a | Nothing deriving(Eq, Ord, Show)
-
 
 --findOlder :: Person -> Person -> Person
+findOlder Nothing Nothing = nothing
+findOlder Nothing (s,i) = (s,i)
+findOlder (s,i) Nothing = (s,i)
 findOlder (s1, i1) (s2, i2) =
   if (i1 > i2)
     then (s1,i1)
