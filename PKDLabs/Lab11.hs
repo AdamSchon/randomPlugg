@@ -7,13 +7,13 @@ data FamilyTree = Void
   | Man String Int FamilyTree FamilyTree
   | Woman String Int FamilyTree FamilyTree deriving(Show)
 
-data Person = Nothing
+data Person = Nobody
   | String Int deriving(Show)
 
 findOlder :: Person -> Person -> Person
-findOlder Nothing Nothing = Nothing
-findOlder Person Nothing = Person
-findOlder Nothing Person = Person
+findOlder Nobody Nobody = Nothing
+findOlder s i Nobody = s i
+findOlder Nobody s i = s i
 findOlder s1 i1 s2 i2
   | i1 > i2 = (s1 i1)
   | otherwise = (s2 i2)
