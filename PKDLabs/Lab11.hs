@@ -20,5 +20,5 @@ findOlder (Just (s1, i1)) (Just(s2, i2)) =
 
 oldestWoman Void = Nothing
 oldestWoman (Woman name age left right) =
-  maybe Nothing findOlder (name age) (maybe Nothing findOlder ((oldestWoman left) (oldestWoman right)))
-oldestWoman (Man name age left right) = maybe Nothing findOlder ((oldestWoman left) (oldestWoman right))
+  findOlder (name age) (findOlder ((oldestWoman left) (oldestWoman right)))
+oldestWoman (Man name age left right) = findOlder ((oldestWoman left) (oldestWoman right))
